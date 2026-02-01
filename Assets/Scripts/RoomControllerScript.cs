@@ -16,6 +16,8 @@ public class RoomControllerScript : MonoBehaviour
     public GameObject doorL;
     public GameObject doorR;
 
+    List<GameObject> doors = new List<GameObject>();
+
     public Sprite doorOpenSprite;
     public Sprite doorClosedSprite;
     public Sprite wallSprite;
@@ -23,7 +25,6 @@ public class RoomControllerScript : MonoBehaviour
     //GameObject[] doors;
 
     GameObject doorLast;
-    List<GameObject> doors = new List<GameObject>();
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -79,7 +80,7 @@ public class RoomControllerScript : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.RightArrow) == true)
         {
-            int doorStateInt = (int) Variables.Object(doorL).Get("state");
+            int doorStateInt = (int) Variables.Object(doorR).Get("state");
             if (doorStateInt==1)
             {
                 doorLast = doorL;
