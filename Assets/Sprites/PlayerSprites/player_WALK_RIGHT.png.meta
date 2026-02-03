@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3d808443e4c38f243a7bcd96661d0349
+guid: 05dce3d41e4c7c4478e6938663a9561a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: char_idle_0
+      name: player_WALK_RIGHT_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,20 +112,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8979e9e06a0ec3641aa4ad9c0548cec6
-      internalID: -585339349
+      spriteID: 7be097bd25bdf80409c35214fdfde6e3
+      internalID: -701374834
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: char_idle_1
+      name: player_WALK_RIGHT_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eed7b1af2e20de940988b9e6263e7e42
+      internalID: -355729658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_WALK_RIGHT_2
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,30 +156,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2835653b121e23647be95015657a5d1c
-      internalID: 833591550
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: char_idle_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 13f64d37a5b2783468a937545d1df195
-      internalID: 926799628
+      spriteID: 795c3f96c9a30874482c42cc5405f340
+      internalID: 2048392390
       vertices: []
       indices: 
       edges: []
@@ -166,7 +166,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f0ca2ff93f52fba449f265e6a5c2b805
+    spriteID: 501c4e2c7371037429b6ffe5bec1c428
     internalID: 0
     vertices: []
     indices: 
@@ -176,9 +176,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      char_idle_0: -585339349
-      char_idle_1: 833591550
-      char_idle_2: 926799628
+      player_WALK_RIGHT_0: -701374834
+      player_WALK_RIGHT_1: -355729658
+      player_WALK_RIGHT_2: 2048392390
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
