@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 
 public class PlayerCtrl :MonoBehaviour
 {
-    public float moveSpeed = 5f;
-
+    public RoomControllerScript roomControllerScript;
+    public float moveSpeed = 3f;
     private Rigidbody2D rb;
     private Animator animator;
     private Vector2 moveVector;
@@ -38,5 +39,14 @@ public class PlayerCtrl :MonoBehaviour
     void FixedUpdate ()
     {
         rb.linearVelocity = moveVector * moveSpeed;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "door")
+        {
+            GameObject door = other.gameObject;
+            roomControllerScript.setRoom(door, this.gameObject);
+        }
     }
 }
