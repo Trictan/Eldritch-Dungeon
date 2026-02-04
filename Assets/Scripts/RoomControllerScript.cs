@@ -2,6 +2,8 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UIElements;
+using System;
 
 public class RoomControllerScript : MonoBehaviour
 {
@@ -15,6 +17,19 @@ public class RoomControllerScript : MonoBehaviour
     public GameObject doorD;
     public GameObject doorL;
     public GameObject doorR;
+
+    private Camera cam;
+    private Vector3 endPosition;
+    private Vector3 startPosition;
+
+    private float elapsedTime;
+    private float duration = 0.25f;
+
+    private bool inLerp = false;
+
+    
+
+    Dictionary <string, GameObject> oppositeDoor = new Dictionary<string, GameObject>();
 
     List<GameObject> doors = new List<GameObject>();
 
@@ -31,76 +46,67 @@ public class RoomControllerScript : MonoBehaviour
 
     void Start()
     {
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        endPosition = cam.transform.position;
+
         doors.Add(doorU);
         doors.Add(doorD);
         doors.Add(doorL);
         doors.Add(doorR);
+
+        oppositeDoor.Add("DoorU", doorD);
+        oppositeDoor.Add("DoorD", doorU);
+        oppositeDoor.Add("DoorL", doorR);
+        oppositeDoor.Add("DoorR", doorL);
     }  
 
-    // Update is called once per frame
-    void Update()
+    Vector3 cardinalVector(Vector3 vec)
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) == true) {
-            int doorStateInt = (int) Variables.Object(doorU).Get("state");
-            if (doorStateInt==1)
-            {
-                doorLast = doorD;
-                setRoom();
-            } else
-            {
-                print("up: " + doorStateInt);
-            }
-        }
-
-        else if (Input.GetKeyDown(KeyCode.DownArrow) == true) {
-            int doorStateInt = (int) Variables.Object(doorD).Get("state");
-            if (doorStateInt==1)
-            {
-                doorLast = doorU;
-                setRoom();
-            } else
-            {
-                print("down: " + doorStateInt);
-            }
-            
-        }
-
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) == true) {
-            int doorStateInt = (int) Variables.Object(doorL).Get("state");
-            if (doorStateInt==1)
-            {
-                doorLast = doorR;
-                setRoom();
-            } else
-            {
-                print("left: " + doorStateInt);
-            }
-            
-        }
-
-        else if (Input.GetKeyDown(KeyCode.RightArrow) == true)
+        if (Mathf.Abs(vec.x) > Mathf.Abs(vec.y))
         {
-            int doorStateInt = (int) Variables.Object(doorR).Get("state");
-            if (doorStateInt==1)
-            {
-                doorLast = doorL;
-                setRoom();
-            } else
-            {
-                print("right: " + doorStateInt);
-            }
-            
+            return new Vector3(vec.x, 0, vec.z);
         }
-            
+        else {
+            return new Vector3(0, vec.y, vec.z);
+        }
     }
 
-    void setRoom()
+    void Update()
     {
-        randomizeRoom();
-        setColor(doorU);
-        setColor(doorD);
-        setColor(doorR);
-        setColor(doorL);
+        if (inLerp) {
+            elapsedTime += Time.deltaTime;
+            float percentage = elapsedTime / duration;
+            cam.transform.position = Vector3.Lerp(startPosition, endPosition, percentage);
+            if (elapsedTime==duration) {
+                inLerp=false;
+            }
+        }
+
+    }
+
+    void startLerp()
+    {
+        elapsedTime = 0f;
+        inLerp=true;
+    }
+
+    public void setRoom(GameObject door, GameObject player)
+    {
+        // return if door not open
+        int doorStateInt = (int) Variables.Object(door).Get("state");
+        if (doorStateInt != 1) {return;}
+
+        doorLast = oppositeDoor[door.name];
+
+        nextRoom();
+        for (int i = 0; i < doors.Count(); i++) {
+            setSprite(doors[i]);
+        }
+
+        startPosition = doorLast.transform.position * 2; //(doorLast.transform.position - player.transform.position).normalized *15;
+        startPosition = cardinalVector(startPosition);
+        player.transform.position = doorLast.transform.Find("Spawnpoint").transform.position;
+        startLerp();
     }
 
 
@@ -125,14 +131,15 @@ public class RoomControllerScript : MonoBehaviour
         return state;
     }
 
-    void randomizeRoom()
+    void nextRoom()
     {
         Variables.Object(doorLast).Set("state",2);
 
-        int r = Random.Range(1,4);
+        int r = UnityEngine.Random.Range(1,4); // 1-3
         int n = 0;
 
-        doors = doors.OrderBy( x => Random.value ).ToList( );
+        doors = doors.OrderBy( x => UnityEngine.Random.value ).ToList( );
+
         for (int i = 0; i < doors.Count(); i++) 
         {
             if (doorLast != doors[i])
@@ -147,21 +154,10 @@ public class RoomControllerScript : MonoBehaviour
                 }
             }
         }
-
-        //int R1 = Random.Range(0,3);
-        //int R2 = Random.Range(0,3);
-        //int R3 = Random.Range(0,3);
-        //int R4 = Random.Range(0,3);
-
-        //Variables.Object(doorU).Set("state", R1);
-        //Variables.Object(doorD).Set("state", R2);
-        //Variables.Object(doorL).Set("state", R3);
-        //Variables.Object(doorR).Set("state", R4);
     }
 
-    void setColor(GameObject door)
+    void setSprite(GameObject door)
     {
-        Color doorColor;
         Sprite doorSprite;
 
         int doorStateInt = (int) Variables.Object(door).Get("state");
@@ -170,24 +166,19 @@ public class RoomControllerScript : MonoBehaviour
         switch (state)
         {
             case doorState.Wall:
-                doorColor=Color.green;
                 doorSprite=wallSprite;
                 break;
             case doorState.Open:
-                doorColor=Color.blue;
                 doorSprite=doorOpenSprite;
                 break;
             case doorState.Closed:
-                doorColor=Color.red;
                 doorSprite=doorClosedSprite;
                 break;
             default:
-                doorColor=Color.white;
                 doorSprite=wallSprite;
                 break; 
         }
         SpriteRenderer spriteRenderer = door.GetComponentInChildren<SpriteRenderer>();
-        //spriteRenderer.color = doorColor;
         spriteRenderer.sprite = doorSprite;
     }
 }
