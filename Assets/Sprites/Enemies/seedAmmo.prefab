@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1397526613616532481}
   - component: {fileID: -1394472133521105680}
   m_Layer: 0
-  m_Name: seedAmo
+  m_Name: seedAmmo
   m_TagString: enemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -18,9 +18,8 @@ public class Flower1Shooting : MonoBehaviour
     void Update()
     {
         float distance = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log(distance); //Keep to check if distance it followed correctly.
 
-        if(distance < 7) //Hardcoding should be changed mabey.
+        if(distance < 7) //Hardcoding should be changed maybe.
         {
            timer -= Time.deltaTime;
 

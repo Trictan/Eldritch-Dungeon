@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3888949431806227815}
   - component: {fileID: 8319033817627336161}
   - component: {fileID: -4137660226549573179}
+  - component: {fileID: 1878918818617705991}
   m_Layer: 0
   m_Name: Flower_type1
   m_TagString: enemy
@@ -151,6 +152,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.76, y: 3.24}
   m_EdgeRadius: 0
+--- !u!114 &1878918818617705991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885313239738718303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"Health","value":{"$content":5.0,"$type":"System.Single"},"typeHandle":{"Identification":"System.Single,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
 --- !u!1 &2394668878651143333
 GameObject:
   m_ObjectHideFlags: 0

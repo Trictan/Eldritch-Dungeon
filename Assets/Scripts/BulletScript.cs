@@ -8,7 +8,7 @@ private Camera mainCam;
 private Rigidbody2D rb;
 public float speed;
 
-public int damage;
+public float damage;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
