@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6390789931737727171}
   - component: {fileID: 5937906603617600677}
   - component: {fileID: 2869736891526078110}
+  - component: {fileID: -1397526613616532481}
   m_Layer: 0
   m_Name: seedAmo
   m_TagString: Untagged
@@ -115,3 +116,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &-1397526613616532481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5538229617618804044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb567e320d073e45b8ef5b276eea89e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 4

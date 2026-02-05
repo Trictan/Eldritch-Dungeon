@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Flower1Shooting : MonoBehaviour
 {
+    public GameObject seedBullet;
+    public Transform seedBulletPos;
+    private float timer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -11,6 +14,16 @@ public class Flower1Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timer += Time.deltaTime;
+        if(timer > 2)
+        {
+            timer = 0;
+            shoot();
+        }
+    }
+
+    void shoot()
+    {
+        Instantiate(seedBullet, seedBulletPos.position, Quaternion.identity);
     }
 }
