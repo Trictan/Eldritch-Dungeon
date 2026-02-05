@@ -19,7 +19,7 @@ public class Flower1Shooting : MonoBehaviour
     {
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
-        if(distance < 7) //Hardcoding should be changed maybe.
+        if(distance < 20) //Hardcoding should be changed maybe.
         {
            timer -= Time.deltaTime;
 

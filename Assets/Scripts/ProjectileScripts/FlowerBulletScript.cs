@@ -4,8 +4,8 @@ public class FlowerBulletScript : MonoBehaviour
 {
     private GameObject player;
     private Rigidbody2D rb;
-    public float force;
-    public float maxDistance;
+    public float speed;
+    public float damage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,7 +13,7 @@ public class FlowerBulletScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("player");
         
         Vector3 direction = player.transform.position - transform.position;
-        rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * force;
+        rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * speed;
         float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot + 90);
     }
@@ -32,7 +32,7 @@ public class FlowerBulletScript : MonoBehaviour
         }
         if (other.CompareTag("player"))
         {
-            //Add damage to player...
+            other.GetComponent<LifeSystem>().TakeDamage(damage);
             Destroy(gameObject);
         }
     }
