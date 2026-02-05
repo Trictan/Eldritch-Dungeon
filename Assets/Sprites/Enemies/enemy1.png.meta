@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a5224aabbc0bc704b914949de4583eb2
+guid: 622d39ab6ce03c94ead5426d358d0495
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: diddy_0
+      name: enemy1_0
       rect:
         serializedVersion: 2
-        x: 54
-        y: 35
-        width: 1030
-        height: 1537
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 388ad0b6e0e9a6d4da742c5a07b4cea7
-      internalID: -625986904
+      spriteID: 6c8b8c55f17d532489fda95ee7425670
+      internalID: -1518349569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy1_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f66a8b139bcf61f4ea865b41f96863b7
+      internalID: -1511415085
       vertices: []
       indices: 
       edges: []
@@ -122,7 +144,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5c228516ebb85c345a92d2d5cdf47ea8
+    spriteID: a27c9375285281e40aa16c12b71b145d
     internalID: 0
     vertices: []
     indices: 
@@ -132,7 +154,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      diddy_0: -625986904
+      enemy1_0: -1518349569
+      enemy1_1: -1511415085
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
