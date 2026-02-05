@@ -129,8 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb567e320d073e45b8ef5b276eea89e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 4
-  maxDistance: 0
+  speed: 10
+  damage: 1
 --- !u!61 &-1394472133521105680
 BoxCollider2D:
   m_ObjectHideFlags: 0
