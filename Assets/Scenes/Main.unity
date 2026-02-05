@@ -2747,8 +2747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"hp","value":{"$content":6,"$type":"System.Int32"},"typeHandle":{"Identification":"System.Int32,
-      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"},{"name":"dmgX","value":{"$content":1.0,"$type":"System.Single"},"typeHandle":{"Identification":"System.Single,
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"dmgX","value":{"$content":1.0,"$type":"System.Single"},"typeHandle":{"Identification":"System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"},{"name":"dmgBonus","value":{"$content":0.0,"$type":"System.Single"},"typeHandle":{"Identification":"System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
@@ -2827,7 +2826,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 50
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -2839,7 +2838,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!58 &1427291338
 CircleCollider2D:
@@ -4278,7 +4277,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1878918818617705991, guid: 4fb403ff665f69049aa738daa1e2d91e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -4298,3 +4298,4 @@ SceneRoots:
   - {fileID: 1834425549963828075}
   - {fileID: 386990764}
   - {fileID: 6057675633901147204}
+  - {fileID: 1427291336}
