@@ -26,8 +26,13 @@ public class FlowerBulletScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("player") || other.CompareTag("wall"))
+        if (other.CompareTag("wall"))
         {
+            Destroy(gameObject);
+        }
+        if (other.CompareTag("player"))
+        {
+            //Add damage to player...
             Destroy(gameObject);
         }
     }

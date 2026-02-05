@@ -8,6 +8,8 @@ private Camera mainCam;
 private Rigidbody2D rb;
 public float speed;
 
+public int damage;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,5 +28,17 @@ public float speed;
     void Update()
     {
         
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("wall"))
+        {
+            Destroy(gameObject);
+        }
+        if (other.CompareTag("enemy"))
+        {
+            other.GetComponent<LifeSystem>().TakeDamage(damage);
+            Destroy(gameObject);
+        }
     }
 }
