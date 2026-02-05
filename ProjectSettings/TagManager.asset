@@ -6,6 +6,10 @@ TagManager:
   tags:
   - door
   - player
+  - wall
+  - enemy
+  - playerBullet
+  - enemyBullet
   layers:
   - Default
   - TransparentFX
