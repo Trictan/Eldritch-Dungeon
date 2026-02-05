@@ -3,11 +3,17 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    
-    public void takeDamage(int amount)
+    public float HP;
+    public float movementSpeed;
+    public float dmgX;
+    public float bonusDmg;
+    public float iFrames;
+    public int experience;
+    public int lvl;
+ 
+    public float GetiFrames()
     {
-        //int health = (int) Variables.Object(this.GameObject).Get("state");
-        //GetComponentInParentV
-        //health -=amount;
+        return iFrames;
     }
+
 }
