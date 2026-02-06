@@ -1,4 +1,5 @@
 using UnityEngine;
+using Unity.VisualScripting;
 
 public class Shooting : MonoBehaviour
 {
@@ -11,10 +12,14 @@ public class Shooting : MonoBehaviour
     private float timer;
     public float attackSpeed;
 
+    private Animator animator;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        animator = BulletTransform.gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -34,6 +39,7 @@ public class Shooting : MonoBehaviour
             if(timer>attackSpeed)
             {
                 canFire=true;
+                animator.SetBool("canFire", canFire);
                 timer=0;
             }
         }
@@ -41,10 +47,13 @@ public class Shooting : MonoBehaviour
         if (Input.GetMouseButton(0) && canFire)
         {
             canFire = false;
+            animator.SetBool("canFire", canFire);
+            animator.SetTrigger("fire");
             //anim here
             
             Instantiate(bullet, BulletTransform.position, Quaternion.identity);
         }
 
     }
+
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 77b79c2cfb503204ca90cc75cbca1190
+guid: 94e5d50ac8667f9429d2259e0fd73ecd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: crossbow_0
+      name: crossbow_idle 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -112,14 +112,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c26c1c964188e7243833ed9a9cc478fa
-      internalID: -1412492730
+      spriteID: 34961e37b8650674081e40c106cbd613
+      internalID: 32240300
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crossbow_1
+      name: crossbow_idle 1_1
       rect:
         serializedVersion: 2
         x: 16
@@ -134,52 +134,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f33e4ee1589c2da48b304aa89b2fed85
-      internalID: -1338096905
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: crossbow_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a16d4cea43ed41c41b12368cd81c6449
-      internalID: 1393164318
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: crossbow_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 14863a01b7d71ab489417b57fa7db3f2
-      internalID: -509894719
+      spriteID: 671c1cb2be0c6f6418e8e84b4e00ea68
+      internalID: 1252986164
       vertices: []
       indices: 
       edges: []
@@ -188,7 +144,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 7f532b57d0aeed44fa22ec7985092ab2
+    spriteID: f30ef77d8702ca743b7690ba3d17297f
     internalID: 0
     vertices: []
     indices: 
@@ -198,10 +154,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      crossbow_0: -1412492730
-      crossbow_1: -1338096905
-      crossbow_2: 1393164318
-      crossbow_3: -509894719
+      crossbow_idle 1_0: 32240300
+      crossbow_idle 1_1: 1252986164
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
