@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 public class player : MonoBehaviour
 {
 
-    public PlayerStats reference;
+    //public PlayerStats reference;
     
     public bool iFrame;
     private float timer;
@@ -23,11 +23,11 @@ public class player : MonoBehaviour
         if(iFrame)
         {
             timer +=Time.deltaTime;
-            if(timer>reference.GetiFrames())
-            {
+            //if(timer>reference.GetiFrames())
+            //{
                 iFrame=false;
                 timer=0;
-            }
+            //}
         }
         
     }

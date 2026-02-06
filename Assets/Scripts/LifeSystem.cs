@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 
 public class LifeSystem : MonoBehaviour
 {   
-    public player skibidi;
+    //public player skibidi;
     public float maxHealth;
     float currentHealth;
     
@@ -16,18 +16,18 @@ public class LifeSystem : MonoBehaviour
     // Update is called once per frame
     public void TakeDamage(float damage)
     {
-        if (gameObject.CompareTag("player") && skibidi.GetiFrame())
-        {
-            print("iframes used");
-        }
-        else {
+        //if (gameObject.CompareTag("player") && skibidi.GetiFrame())
+        //{
+        //    print("iframes used");
+       //}
+        //else {
         currentHealth -= damage;
         Debug.Log(gameObject.name + " took " + damage + " damage. Health: " + currentHealth);
         if (gameObject.CompareTag("player"))
         {
-            skibidi.SetiFrame();
+            //skibidi.SetiFrame();
         }
-        }
+        //}
         if(currentHealth <= 0)
         {
             Die();
