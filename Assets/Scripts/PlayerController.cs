@@ -48,7 +48,7 @@ public class PlayerCtrl :MonoBehaviour
             if(iFrame)
         {
             timer +=Time.deltaTime;
-            if(timer>reference.GetiFrames())
+            if(timer>reference.iFrames)
             {
                 iFrame=false;
                 timer=0;
@@ -65,9 +65,9 @@ public class PlayerCtrl :MonoBehaviour
             roomControllerScript.setRoom(door, this.gameObject);
         }
     }
-        public void SetiFrame()
+        public void SetiFrame(bool val)
     {
-        iFrame=true;
+        iFrame=val;
     }
     public bool GetiFrame()
     {
