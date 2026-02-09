@@ -9,6 +9,12 @@ public class PlayerCtrl :MonoBehaviour
     private Animator animator;
     private Vector2 moveVector;
 
+//
+    public PlayerStats reference;
+    
+    public bool iFrame;
+    private float timer;
+//
 
     void Start ()
     {
@@ -39,6 +45,16 @@ public class PlayerCtrl :MonoBehaviour
     void FixedUpdate ()
     {
         rb.linearVelocity = moveVector * moveSpeed;
+            if(iFrame)
+        {
+            timer +=Time.deltaTime;
+            if(timer>reference.GetiFrames())
+            {
+                iFrame=false;
+                timer=0;
+            }
+        }
+      
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -48,5 +64,13 @@ public class PlayerCtrl :MonoBehaviour
             GameObject door = other.gameObject;
             roomControllerScript.setRoom(door, this.gameObject);
         }
+    }
+        public void SetiFrame()
+    {
+        iFrame=true;
+    }
+    public bool GetiFrame()
+    {
+        return iFrame;
     }
 }
