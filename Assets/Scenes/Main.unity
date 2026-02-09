@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab67830513f714a4ba3b6328ea31bdf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skibidi: {fileID: 0}
+  reference2: {fileID: 0}
   maxHealth: 5
 --- !u!1 &330585543
 GameObject:
@@ -3019,22 +3019,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab67830513f714a4ba3b6328ea31bdf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skibidi: {fileID: 1281599603}
+  reference2: {fileID: 1281599607}
   maxHealth: 3
---- !u!114 &1281599603
+--- !u!114 &1281599607 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2683994537034932274, guid: 0d32695f3515cab499a3848e1082141c, type: 3}
+  m_PrefabInstance: {fileID: 1834425549963828075}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281599584}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fbed5167d8cd6f418039bc5fe3c48ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 817d689fe5f6d6b44a343a624d36a2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reference: {fileID: 1281599591}
-  iFrame: 0
 --- !u!1 &1427291334
 GameObject:
   m_ObjectHideFlags: 0
@@ -3125,7 +3122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab67830513f714a4ba3b6328ea31bdf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skibidi: {fileID: 0}
+  reference2: {fileID: 0}
   maxHealth: 5
 --- !u!114 &1427291340
 MonoBehaviour:
@@ -4653,6 +4650,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2683994537034932274, guid: 0d32695f3515cab499a3848e1082141c, type: 3}
+      propertyPath: reference
+      value: 
+      objectReference: {fileID: 1281599591}
+    - target: {fileID: 2683994537034932274, guid: 0d32695f3515cab499a3848e1082141c, type: 3}
       propertyPath: roomController
       value: 
       objectReference: {fileID: 1785546863}
@@ -4725,9 +4726,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9216845779725696650, guid: 0d32695f3515cab499a3848e1082141c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1281599597}
-    - targetCorrespondingSourceObject: {fileID: 9216845779725696650, guid: 0d32695f3515cab499a3848e1082141c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1281599603}
   m_SourcePrefab: {fileID: 100100000, guid: 0d32695f3515cab499a3848e1082141c, type: 3}
 --- !u!1001 &6057675633901147204
 PrefabInstance:
