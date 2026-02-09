@@ -7,13 +7,13 @@ public class PlayerStats : MonoBehaviour
     public float movementSpeed;
     public float dmgX;
     public float bonusDmg;
-    public float iFrames;
+    public float iFrameDuration;
     public int experience;
     public int lvl;
  
     public float GetiFrames()
     {
-        return iFrames;
+        return iFrameDuration;
     }
 
 }

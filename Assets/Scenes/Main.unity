@@ -136,7 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab67830513f714a4ba3b6328ea31bdf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reference2: {fileID: 0}
   maxHealth: 5
 --- !u!1 &330585543
 GameObject:
@@ -3027,7 +3026,7 @@ MonoBehaviour:
   movementSpeed: 0
   dmgX: 0
   bonusDmg: 0
-  iFrames: 1
+  iFrameDuration: 0.5
   experience: 0
   lvl: 0
 --- !u!114 &1281599597
@@ -3042,19 +3041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab67830513f714a4ba3b6328ea31bdf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reference2: {fileID: 1281599607}
   maxHealth: 3
---- !u!114 &1281599607 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2683994537034932274, guid: 0d32695f3515cab499a3848e1082141c, type: 3}
-  m_PrefabInstance: {fileID: 1834425549963828075}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281599584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 817d689fe5f6d6b44a343a624d36a2d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1427291334
 GameObject:
   m_ObjectHideFlags: 0
@@ -3145,7 +3132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab67830513f714a4ba3b6328ea31bdf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reference2: {fileID: 0}
   maxHealth: 5
 --- !u!114 &1427291340
 MonoBehaviour:
@@ -4674,6 +4660,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2683994537034932274, guid: 0d32695f3515cab499a3848e1082141c, type: 3}
       propertyPath: reference
+      value: 
+      objectReference: {fileID: 1281599591}
+    - target: {fileID: 2683994537034932274, guid: 0d32695f3515cab499a3848e1082141c, type: 3}
+      propertyPath: playerStats
       value: 
       objectReference: {fileID: 1281599591}
     - target: {fileID: 2683994537034932274, guid: 0d32695f3515cab499a3848e1082141c, type: 3}

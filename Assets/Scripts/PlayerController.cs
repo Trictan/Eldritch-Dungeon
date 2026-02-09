@@ -10,7 +10,7 @@ public class PlayerCtrl :MonoBehaviour
     private Vector2 moveVector;
 
 //
-    public PlayerStats reference;
+    public PlayerStats playerStats;
     
     public bool iFrame;
     private float timer;
@@ -45,10 +45,10 @@ public class PlayerCtrl :MonoBehaviour
     void FixedUpdate ()
     {
         rb.linearVelocity = moveVector * moveSpeed;
-            if(iFrame)
-        {
+
+        if(iFrame) {
             timer +=Time.deltaTime;
-            if(timer>reference.iFrames)
+            if(timer>playerStats.iFrameDuration)
             {
                 iFrame=false;
                 timer=0;
@@ -65,7 +65,8 @@ public class PlayerCtrl :MonoBehaviour
             roomControllerScript.setRoom(door, this.gameObject);
         }
     }
-        public void SetiFrame(bool val)
+    
+    public void SetiFrame(bool val)
     {
         iFrame=val;
     }

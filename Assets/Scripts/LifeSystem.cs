@@ -15,14 +15,17 @@ public class LifeSystem : MonoBehaviour
     // Update is called once per frame
     public void TakeDamage(float damage)
     {   
-        if (gameObject.CompareTag("player")) {
-            PlayerCtrl PlayerCtrlScript = gameObject.GetComponent<PlayerCtrl>();
-            if (PlayerCtrlScript.GetiFrame())
+        if(gameObject.TryGetComponent<PlayerCtrl>(out PlayerCtrl pc))
+        {
+            if (pc.GetiFrame())
             {
-                PlayerCtrlScript.SetiFrame(true);
+                Debug.Log("iFrames used.");
                 return;
             }
+            pc.SetiFrame(true);
+
         }
+        
         
         currentHealth -= damage;
         Debug.Log(gameObject.name + " took " + damage + " damage. Health: " + currentHealth);
