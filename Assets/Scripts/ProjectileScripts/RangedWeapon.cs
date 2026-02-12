@@ -13,8 +13,9 @@ public class RangedWeapon : MonoBehaviour
     public float attackDelay;
     public float dmg;
     public float projectileSpeed;
-
+    public Transform projectileFolder;
     private Animator animator;
+      
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -52,8 +53,8 @@ public class RangedWeapon : MonoBehaviour
             animator.SetBool("canFire", canFire);
             animator.SetTrigger("fire");
             //anim here
-            
-            Instantiate(bullet, BulletTransform.position, Quaternion.identity);
+        
+            Instantiate(bullet, BulletTransform.position, Quaternion.identity, projectileFolder);
         }
 
     }

@@ -8,6 +8,7 @@ public class Flower1Shooting : MonoBehaviour
     public float fireDelay;
     private float timer = 0;
     private GameObject player;
+    public Transform projectileFolder;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,6 +34,6 @@ public class Flower1Shooting : MonoBehaviour
 
     void shoot()
     {
-        Instantiate(seedBullet, seedBulletPos.position, Quaternion.identity);
+        Instantiate(seedBullet, seedBulletPos.position, Quaternion.identity, projectileFolder);
     }
 }
