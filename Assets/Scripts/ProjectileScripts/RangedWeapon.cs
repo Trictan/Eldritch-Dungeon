@@ -1,7 +1,7 @@
 using UnityEngine;
 using Unity.VisualScripting;
 
-public class Shooting : MonoBehaviour
+public class RangedWeapon : MonoBehaviour
 {
     private Camera mainCam;
     private Vector3 mousePos;
@@ -10,7 +10,9 @@ public class Shooting : MonoBehaviour
     public Transform BulletTransform;
     public bool canFire;
     private float timer;
-    public float attackSpeed;
+    public float attackDelay;
+    public float dmg;
+    public float projectileSpeed;
 
     private Animator animator;
 
@@ -36,7 +38,7 @@ public class Shooting : MonoBehaviour
         if(!canFire)
         {
             timer +=Time.deltaTime;
-            if(timer>attackSpeed)
+            if(timer>attackDelay)
             {
                 canFire=true;
                 animator.SetBool("canFire", canFire);
