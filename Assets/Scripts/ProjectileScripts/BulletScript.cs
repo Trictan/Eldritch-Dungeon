@@ -6,13 +6,34 @@ public class BulletScript : MonoBehaviour
 private Vector3 mousePos;
 private Camera mainCam;
 private Rigidbody2D rb;
-public float speed;
+private float speed;
 
-public float damage;
+private float damage;
+
+
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameObject player=GameObject.FindWithTag("player");
+        
+       if (player==null)
+        {
+            print("super important super error, nothing will work, unfixable and broken, never let this be printed!");
+        }
+        
+        RangedWeapon pc = player.GetComponentInChildren<RangedWeapon>();
+        
+        if(pc!=null)
+        {
+            speed=pc.projectileSpeed;
+            damage=pc.dmg;
+            
+        }
+        
+
         mainCam=GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rb=GetComponent<Rigidbody2D>();
         mousePos=mainCam.ScreenToWorldPoint(Input.mousePosition);
