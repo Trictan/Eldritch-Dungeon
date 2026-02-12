@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerCtrl :MonoBehaviour
+public class PlayerCtrl: MonoBehaviour
 {
     public RoomControllerScript roomControllerScript;
     public float moveSpeed = 3f;
