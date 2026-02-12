@@ -13,10 +13,9 @@ public class RoomControllerScript : MonoBehaviour
         Closed = 2
     };
 
-    public GameObject doorU;
-    public GameObject doorD;
-    public GameObject doorL;
-    public GameObject doorR;
+    public GameController gameController;
+
+    public List<GameObject> doors;
 
     private Camera cam;
     private Vector3 endPosition;
@@ -27,11 +26,10 @@ public class RoomControllerScript : MonoBehaviour
 
     private bool inLerp = false;
 
-    
 
-    Dictionary <string, GameObject> oppositeDoor = new Dictionary<string, GameObject>();
+    Dictionary <GameObject, GameObject> oppositeDoor = new Dictionary<GameObject, GameObject>();
 
-    List<GameObject> doors = new List<GameObject>();
+    //List<GameObject> doors = new List<GameObject>();
 
     public Sprite doorOpenSprite;
     public Sprite doorClosedSprite;
@@ -49,15 +47,11 @@ public class RoomControllerScript : MonoBehaviour
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         endPosition = cam.transform.position;
 
-        doors.Add(doorU);
-        doors.Add(doorD);
-        doors.Add(doorL);
-        doors.Add(doorR);
+        oppositeDoor.Add(doors[0], doors[1]);
+        oppositeDoor.Add(doors[1], doors[0]);
+        oppositeDoor.Add(doors[2], doors[3]);
+        oppositeDoor.Add(doors[3], doors[2]);
 
-        oppositeDoor.Add("DoorU", doorD);
-        oppositeDoor.Add("DoorD", doorU);
-        oppositeDoor.Add("DoorL", doorR);
-        oppositeDoor.Add("DoorR", doorL);
     }  
 
     Vector3 cardinalVector(Vector3 vec)
@@ -81,8 +75,9 @@ public class RoomControllerScript : MonoBehaviour
                 inLerp=false;
             }
         }
-
     }
+
+
 
     void startLerp()
     {
@@ -92,20 +87,23 @@ public class RoomControllerScript : MonoBehaviour
 
     public void setRoom(GameObject door, GameObject player)
     {
+        // return if room not cleared
+        if (!gameController.isClear()) {return;};
+
         // return if door not open
         int doorStateInt = (int) Variables.Object(door).Get("state");
         if (doorStateInt != 1) {return;}
 
-        doorLast = oppositeDoor[door.name];
+        doorLast = oppositeDoor[door];
 
         nextRoom();
-        for (int i = 0; i < doors.Count(); i++) {
-            setSprite(doors[i]);
-        }
+        setSprites();
 
         startPosition = doorLast.transform.position * 2; //(doorLast.transform.position - player.transform.position).normalized *15;
         startPosition = cardinalVector(startPosition);
         player.transform.position = doorLast.transform.Find("Spawnpoint").transform.position;
+
+        gameController.SpawnEnemies();
         startLerp();
     }
 
@@ -156,6 +154,13 @@ public class RoomControllerScript : MonoBehaviour
         }
     }
 
+
+    public void setSprites()
+    {
+        for (int i = 0; i < doors.Count(); i++) {
+            setSprite(doors[i]);
+        }   
+    }
     void setSprite(GameObject door)
     {
         Sprite doorSprite;
@@ -169,7 +174,11 @@ public class RoomControllerScript : MonoBehaviour
                 doorSprite=wallSprite;
                 break;
             case doorState.Open:
-                doorSprite=doorOpenSprite;
+                if (gameController.isClear()) {
+                    doorSprite=doorOpenSprite;
+                } else {
+                    doorSprite = doorClosedSprite;
+                }
                 break;
             case doorState.Closed:
                 doorSprite=doorClosedSprite;
