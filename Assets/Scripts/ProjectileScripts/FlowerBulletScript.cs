@@ -6,14 +6,19 @@ public class FlowerBulletScript : MonoBehaviour
     private Rigidbody2D rb;
     public float speed;
     public float damage;
+    private Vector2 direction;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("player");
-        
-        Vector3 direction = player.transform.position - transform.position;
-        rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * speed;
+        rb = GetComponent<Rigidbody2D>();      
+    }
+
+    public void SetDirection(Vector2 dir)
+    {
+        direction = dir.normalized;
+
+        rb.linearVelocity = direction * speed;
+
         float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot + 90);
     }
