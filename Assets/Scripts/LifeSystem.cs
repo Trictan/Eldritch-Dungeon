@@ -39,7 +39,10 @@ public class LifeSystem : MonoBehaviour
     void Die()
     {
         Debug.Log(gameObject.name + " died!");
-        Destroy(gameObject);
+        if (!gameObject.CompareTag("player"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     public float GetCurrentHealth()
