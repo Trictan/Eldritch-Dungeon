@@ -4669,7 +4669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2540422276699327484, guid: d5fa90d2a894ee84a81c5470c7b7ca06, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2540422276699327484, guid: d5fa90d2a894ee84a81c5470c7b7ca06, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -4689,7 +4689,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2540422276699327484, guid: d5fa90d2a894ee84a81c5470c7b7ca06, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeToScene
+      value: ExitToMenu
       objectReference: {fileID: 0}
     - target: {fileID: 2540422276699327484, guid: d5fa90d2a894ee84a81c5470c7b7ca06, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
