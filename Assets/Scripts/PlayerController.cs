@@ -25,6 +25,8 @@ public class PlayerCtrl: MonoBehaviour
 
     void Update ()
     {
+        if (PauseHandler.paused==true) {return;}
+
         // get movement input
         float speedX = Input.GetAxisRaw("Horizontal");
         float speedY = Input.GetAxisRaw("Vertical");
