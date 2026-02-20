@@ -28,6 +28,7 @@ public class RangedWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseHandler.paused==true) {return;}
 
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         
