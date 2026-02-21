@@ -49,4 +49,8 @@ public class LifeSystem : MonoBehaviour
     {
         return currentHealth;
     }
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
 }
