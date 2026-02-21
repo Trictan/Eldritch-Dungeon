@@ -3,12 +3,13 @@ using UnityEngine.UI;
 public class HealthbarBehaviour : MonoBehaviour
 {
     public Slider slider;
+    public Image frame;
     public Color low;
     public Color high;
     private LifeSystem life;
     private float maxHealth;
 
-
+    private Image fillImage;
     void Awake()
     {
         life = GetComponentInParent<LifeSystem>();
@@ -16,13 +17,39 @@ public class HealthbarBehaviour : MonoBehaviour
         maxHealth = life.GetMaxHealth();
         slider.maxValue = maxHealth;
         slider.value = life.GetCurrentHealth();
+
+        fillImage = slider.fillRect.GetComponent<Image>();
+
+        RectTransform rt = slider.GetComponent<RectTransform>();
+        RectTransform frameRT = frame.GetComponent<RectTransform>();
+
+        SpriteRenderer enemySprite = GetComponentInParent<SpriteRenderer>();
+
+        // Sätt bredd baserat på enemy
+        rt.sizeDelta = new Vector2((enemySprite.bounds.size.x * 100f) - 8, rt.sizeDelta.y);
+        frameRT.sizeDelta = new Vector2(enemySprite.bounds.size.x * 100f, frameRT.sizeDelta.y);
+
+        // Sätt position under enemy
+        transform.localPosition = new Vector3(0, -enemySprite.bounds.size.y / 2 - 0.2f, 0);
     }
+
     // Update is called once per frame
     void Update()
     {
         float currentHealth = life.GetCurrentHealth();
-        slider.value = currentHealth;
-        slider.gameObject.SetActive(currentHealth < maxHealth);
-        slider.fillRect.GetComponent<Image>().color = Color.Lerp(low, high, slider.normalizedValue);
+        bool shouldBeActive = currentHealth < maxHealth;
+
+        if (slider.gameObject.activeSelf != shouldBeActive)
+        {
+            slider.gameObject.SetActive(shouldBeActive);
+            frame.gameObject.SetActive(shouldBeActive);
+
+        }
+        if (slider.gameObject.activeSelf)
+        {
+            slider.value = currentHealth;
+            fillImage.color = Color.Lerp(low, high, slider.normalizedValue);
+        }
+        
     }
 }
