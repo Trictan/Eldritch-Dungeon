@@ -15,7 +15,7 @@ AnimatorState:
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
+  m_WriteDefaultValues: 0
   m_Mirror: 0
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
@@ -108,7 +108,7 @@ BlendTree:
   m_Name: Walk
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: a8ec2b8a0b585254ea3eaf0b6a0683d1, type: 2}
+    m_Motion: {fileID: 7400000, guid: 97aa50fe668ba0d46a9d1e25782444d3, type: 2}
     m_Threshold: 0
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
@@ -116,7 +116,7 @@ BlendTree:
     m_DirectBlendParameter: speedX
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: a0b9b916d8da8be448829ce2e14bcc4a, type: 2}
+    m_Motion: {fileID: 7400000, guid: 0901e644a6022b64b8a4dd6d9a17cfdc, type: 2}
     m_Threshold: 0.33333334
     m_Position: {x: 0, y: 1}
     m_TimeScale: 1
@@ -124,7 +124,7 @@ BlendTree:
     m_DirectBlendParameter: speedX
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 40b3f594e77c326469d4da2055bb244c, type: 2}
+    m_Motion: {fileID: 7400000, guid: 7ef401b4bae84f04eb496dab1e80c045, type: 2}
     m_Threshold: 0.6666667
     m_Position: {x: -1, y: 0}
     m_TimeScale: 1
