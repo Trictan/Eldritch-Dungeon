@@ -83,12 +83,26 @@ public class GameController : MonoBehaviour
         enemyInstance.transform.parent = enemiesParentNode.transform;
     }
     
+    int NrOfEnemies(){
+        
+        if (floor<=3){
+            int max = traversedRooms * floor;
+            max = max + 1;
+        }
+        else{
+            int max = traversedRooms * (floor - (floor/2));
+        }
+        return max;
+        
+    }
+
+
     public void SpawnEnemies() // add parameters to decide what enemies, how many, etc
     {
         int count = 0;
         while (count<3)
         {
-            int r = Random.Range(0, spawnPoints.Count);
+            int r = Random.Range(floor, NrOfEnemies());
             Vector3 spawnPoint = spawnPoints[r];
             if (ValidSpawn(spawnPoint))
             {
