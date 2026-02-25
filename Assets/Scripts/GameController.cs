@@ -87,12 +87,11 @@ public class GameController : MonoBehaviour
         
         if (floor<=3){
             int max = traversedRooms * floor;
-            max = max + 1;
+            return max = max + 1;
         }
         else{
-            int max = traversedRooms * (floor - (floor/2));
+            return int max = traversedRooms * (floor - (floor/2));
         }
-        return max;
         
     }
 
