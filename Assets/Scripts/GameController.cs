@@ -90,7 +90,8 @@ public class GameController : MonoBehaviour
             return max = max + 1;
         }
         else{
-            return max = traversedRooms * (floor - (floor/2));
+            int max = traversedRooms * (floor - (floor/2));
+            return max;
         };
         
     }
