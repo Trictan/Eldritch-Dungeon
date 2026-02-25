@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f539cec2f2dbb6d42b6a77c17a1163bf
+guid: b9a903518d883be4aa2be63d98149895
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite-player_1-small-upp-Sheet_0
+      name: Sprite-player_1-small-right-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -112,14 +112,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8eb9f0f353d4c6e478f865e48abe55a2
-      internalID: -1784808466
+      spriteID: 04a4ffa3b00d17745bf3a3592bc1b4cc
+      internalID: 1347225856
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-player_1-small-upp-Sheet_1
+      name: Sprite-player_1-small-right-Sheet_1
       rect:
         serializedVersion: 2
         x: 16
@@ -134,14 +134,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc1b06d88d8812143b31b5ab39cee0d4
-      internalID: -387880347
+      spriteID: ca6596b5e9958064094f669e5027e729
+      internalID: 1538043943
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-player_1-small-upp-Sheet_2
+      name: Sprite-player_1-small-right-Sheet_2
       rect:
         serializedVersion: 2
         x: 32
@@ -156,8 +156,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53f8039e5c2fb9a44b8c6019cc2e8cf7
-      internalID: -861800100
+      spriteID: 3ef394941c9f6e34c92bb444ebaf279c
+      internalID: 1379542996
       vertices: []
       indices: 
       edges: []
@@ -166,7 +166,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fd992f4435034144c9915e9b7c04be72
+    spriteID: 8c206e293321eb044abb2a38a4c3a5e3
     internalID: 0
     vertices: []
     indices: 
@@ -176,9 +176,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Sprite-player_1-small-upp-Sheet_0: -1784808466
-      Sprite-player_1-small-upp-Sheet_1: -387880347
-      Sprite-player_1-small-upp-Sheet_2: -861800100
+      Sprite-player_1-small-right-Sheet_0: 1347225856
+      Sprite-player_1-small-right-Sheet_1: 1538043943
+      Sprite-player_1-small-right-Sheet_2: 1379542996
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f539cec2f2dbb6d42b6a77c17a1163bf
+guid: 62ff6862b7324a14a90d7ed9168e1abd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite-player_1-small-upp-Sheet_0
+      name: Sprite-player_1-small-left-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -112,14 +112,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8eb9f0f353d4c6e478f865e48abe55a2
-      internalID: -1784808466
+      spriteID: dc9b329aa46e3a442af5c9aecbd04c8b
+      internalID: -844893667
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-player_1-small-upp-Sheet_1
+      name: Sprite-player_1-small-left-Sheet_1
       rect:
         serializedVersion: 2
         x: 16
@@ -134,14 +134,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc1b06d88d8812143b31b5ab39cee0d4
-      internalID: -387880347
+      spriteID: 4ba5a511661d5424d8006079ec3cdc44
+      internalID: 1297772709
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-player_1-small-upp-Sheet_2
+      name: Sprite-player_1-small-left-Sheet_2
       rect:
         serializedVersion: 2
         x: 32
@@ -156,8 +156,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53f8039e5c2fb9a44b8c6019cc2e8cf7
-      internalID: -861800100
+      spriteID: 46c69d566039a864884805fdebd0c309
+      internalID: 312732484
       vertices: []
       indices: 
       edges: []
@@ -166,7 +166,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fd992f4435034144c9915e9b7c04be72
+    spriteID: 10c5f207563e9a943b4ca5e876b663c9
     internalID: 0
     vertices: []
     indices: 
@@ -176,9 +176,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Sprite-player_1-small-upp-Sheet_0: -1784808466
-      Sprite-player_1-small-upp-Sheet_1: -387880347
-      Sprite-player_1-small-upp-Sheet_2: -861800100
+      Sprite-player_1-small-left-Sheet_0: -844893667
+      Sprite-player_1-small-left-Sheet_1: 1297772709
+      Sprite-player_1-small-left-Sheet_2: 312732484
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
