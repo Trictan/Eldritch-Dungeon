@@ -41,6 +41,10 @@ public class LifeSystem : MonoBehaviour
         Debug.Log(gameObject.name + " died!");
         if (!gameObject.CompareTag("player"))
         {
+            Xp_handling xpHandeler = GameObject.FindWithTag("player")?.GetComponent<Xp_handling>();
+            float toAddXp = gameObject.GetComponent<Enemy_Xp>().getXp();
+            xpHandeler.addXp(toAddXp);
+            Debug.Log("Xp: " + xpHandeler.getPlayerXp());
             Destroy(gameObject);
         }
     }

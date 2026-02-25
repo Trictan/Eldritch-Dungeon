@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8319033817627336161}
   - component: {fileID: -4137660226549573179}
   - component: {fileID: 8755271631744369100}
+  - component: {fileID: 7384045341823312875}
   m_Layer: 0
   m_Name: Flower_type1
   m_TagString: enemy
@@ -166,6 +167,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
+--- !u!114 &7384045341823312875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885313239738718303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04d7fedc81fda34b9672ddbdaa4e0b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Xp: 5
 --- !u!1 &2394668878651143333
 GameObject:
   m_ObjectHideFlags: 0
