@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Enemy_Xp : MonoBehaviour
 {
-    public float Xp = 5;
+    public int Xp = 5;
 
     void Start()
     {
         int randomInt = Random.Range(0, 10);
-        float bonus = Random.Range(0, Xp);
+        int bonus = Random.Range(0, Xp);
 
         if(randomInt == 9)
         {
@@ -15,12 +15,12 @@ public class Enemy_Xp : MonoBehaviour
         }
     }
 
-    void bonusXp(float bonus)
+    void bonusXp(int bonus)
     {
         Xp += bonus;
     }
 
-    public float getXp()
+    public int getXp()
     {
         return Xp;
     }

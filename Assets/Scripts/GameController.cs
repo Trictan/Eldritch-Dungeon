@@ -38,6 +38,11 @@ public class GameController : MonoBehaviour
     {
         if (changeInRoomStatus())
         {
+            bool levelUp = player.GetComponent<LevelSystem>().checkLevelUp();
+            if (levelUp)
+            {
+                //Call to upgrade scene
+            }
             print(isClear());
             roomController.setSprites();
             previousRoomStatus = isClear();

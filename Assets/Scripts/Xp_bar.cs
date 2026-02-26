@@ -29,6 +29,7 @@ public class Xp_bar : MonoBehaviour
         minXpLevel = maxXpLevel; //Last max is the new min
         maxXpLevel = player.GetComponent<LevelSystem>().getGoalXp();
 
+        slider.minValue = minXpLevel;
         slider.maxValue = maxXpLevel;
 
         level = player.GetComponent<LevelSystem>().getLevel();

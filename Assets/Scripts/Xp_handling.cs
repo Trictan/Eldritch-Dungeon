@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Xp_handling : MonoBehaviour
 {
-    private float Xp = 0;
+    private int Xp = 0;
 
-    public void addXp(float add)
+    public void addXp(int add)
     {
         Xp += add;
     }
-    public float getPlayerXp()
+    public int getPlayerXp()
     {
         return Xp;
     }

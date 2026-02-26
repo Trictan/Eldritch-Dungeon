@@ -3,7 +3,7 @@ using UnityEngine;
 public class LevelSystem : MonoBehaviour
 {
     private int level = 0; //Keep track of what level
-    private float goalXp = 0;
+    private int goalXp = 0;
     
     void Start()
     {
@@ -12,9 +12,9 @@ public class LevelSystem : MonoBehaviour
         goalXp = 20; //Depending on how hard mabey??
     }
     void newLevel()
-    {
+    {   
         level ++;
-        goalXp *= 2; //If want make a algoritm.
+        goalXp *= 4; //If want make a algoritm.
     }
 
     public int getLevel()
@@ -22,17 +22,19 @@ public class LevelSystem : MonoBehaviour
         return level;
     }
 
-    public float getGoalXp()
+    public int getGoalXp()
     {
         return goalXp;
     }
 
     public bool checkLevelUp()
     {
-        float currentXp = GetComponent<Xp_handling>().getPlayerXp();
+        int currentXp = GetComponent<Xp_handling>().getPlayerXp();
+        //Debug.Log("Xp level up check: current = " + currentXp + " goal = " + goalXp);
         if(currentXp >= goalXp)
         {
             newLevel();
+            GameObject.FindWithTag("XpBar")?.GetComponent<Xp_bar>().newLevel();
             return true;
         }
         return false;
