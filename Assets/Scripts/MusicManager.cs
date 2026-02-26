@@ -31,7 +31,8 @@ public class MusicManager : MonoBehaviour
         Debug.LogError("Music clips missing!");
         return;
         }
-        double t = AudioSettings.dspTime + 0.05; // liten margin för säker buffer
+        
+        double t = AudioSettings.dspTime + 0.1; // liten margin för säker buffer
         introSource.PlayScheduled(t);
         loopSource.PlayScheduled(t + introSource.clip.length);
     }

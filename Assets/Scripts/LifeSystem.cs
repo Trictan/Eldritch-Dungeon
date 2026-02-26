@@ -28,7 +28,7 @@ public class LifeSystem : MonoBehaviour
         
         
         currentHealth -= damage;
-        Debug.Log(gameObject.name + " took " + damage + " damage. Health: " + currentHealth);
+        //Debug.Log(gameObject.name + " took " + damage + " damage. Health: " + currentHealth);
         
         if(currentHealth <= 0)
         {
@@ -38,13 +38,13 @@ public class LifeSystem : MonoBehaviour
 
     void Die()
     {
-        Debug.Log(gameObject.name + " died!");
+        //-Debug.Log(gameObject.name + " died!");-
         if (!gameObject.CompareTag("player"))
         {
             Xp_handling xpHandeler = GameObject.FindWithTag("player")?.GetComponent<Xp_handling>();
-            float toAddXp = gameObject.GetComponent<Enemy_Xp>().getXp();
+            int toAddXp = gameObject.GetComponent<Enemy_Xp>().getXp();
             xpHandeler.addXp(toAddXp);
-            Debug.Log("Xp: " + xpHandeler.getPlayerXp());
+            //Debug.Log("Xp: " + xpHandeler.getPlayerXp());
             Destroy(gameObject);
         }
     }
