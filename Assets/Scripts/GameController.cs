@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour
             {
                 //Call to upgrade scene
                 player.GetComponent<LevelSystem>().resetGainedLevels();
-                Debug.Log("Upgrade");
+                //Debug.Log("Upgrade");
             }
             print(isClear());
             roomController.setSprites();

@@ -40,8 +40,8 @@ public class LevelSystem : MonoBehaviour
         if(currentXp >= goalXp)
         {
             newLevel();
-            GameObject.FindWithTag("XpBar")?.GetComponent<Xp_bar>().newLevel();
             gainedLevels ++;
+            GameObject.FindWithTag("XpBar")?.GetComponent<Xp_bar>().newLevel();
         }
     }
 
@@ -53,5 +53,6 @@ public class LevelSystem : MonoBehaviour
     public void resetGainedLevels()
     {
         gainedLevels = 0;
+        GameObject.FindWithTag("XpBar")?.GetComponent<Xp_bar>().symbolVisability();
     }
 }

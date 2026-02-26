@@ -38,7 +38,7 @@ public class LifeSystem : MonoBehaviour
 
     void Die()
     {
-        //-----------------Debug.Log(gameObject.name + " died!");----------------
+        //-Debug.Log(gameObject.name + " died!");-
         if (!gameObject.CompareTag("player"))
         {
             Xp_handling xpHandeler = GameObject.FindWithTag("player")?.GetComponent<Xp_handling>();
