@@ -15,12 +15,10 @@ public class RangedWeapon : MonoBehaviour
     public float projectileSpeed;
     public Transform projectileFolder;
     private Animator animator;
-      
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         animator = BulletTransform.gameObject.GetComponent<Animator>();
     }
@@ -40,6 +38,7 @@ public class RangedWeapon : MonoBehaviour
         if(!canFire)
         {
             timer +=Time.deltaTime;
+            animator.SetFloat("attackDelay", timer/attackDelay);
             if(timer>attackDelay)
             {
                 canFire=true;
@@ -48,7 +47,7 @@ public class RangedWeapon : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButton(0) && canFire)
+        else if (Input.GetMouseButton(0) && canFire)
         {
             canFire = false;
             animator.SetBool("canFire", canFire);
