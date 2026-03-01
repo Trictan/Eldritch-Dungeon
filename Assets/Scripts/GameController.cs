@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 public class GameController : MonoBehaviour
 {
-
-
     public RoomControllerScript roomController;
     public GameObject testEnemy;
     public GameObject player;
@@ -16,6 +14,8 @@ public class GameController : MonoBehaviour
     int floor;
     int traversedRooms;
     bool previousRoomStatus=true;
+
+    public UpgradesHandler upgradesHandler;
 
     void Start()
     {
@@ -42,6 +42,7 @@ public class GameController : MonoBehaviour
             if (levelUp > 0)
             {
                 //Call to upgrade scene
+                upgradesHandler.OpenUpgrades();
                 player.GetComponent<LevelSystem>().resetGainedLevels();
                 //Debug.Log("Upgrade");
             }

@@ -10,15 +10,16 @@ private float speed;
 
 private float damage;
 
+private int hp;
+
 private GameObject player;
-
-
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player=GameObject.FindGameObjectWithTag("player");
+        hp = player.GetComponent<PlayerStats>().GetProjectileHits();
+
         
        if (player==null)
         {
@@ -59,7 +60,10 @@ private GameObject player;
         if (other.CompareTag("enemy"))
         {
             other.GetComponent<LifeSystem>().TakeDamage(damage);
-            Destroy(gameObject);
+            hp-=1;
+            if (hp<1) {
+                Destroy(gameObject);
+            }
         }
     }
 }

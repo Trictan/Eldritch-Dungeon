@@ -6,6 +6,8 @@ public class PauseHandler : MonoBehaviour
     public Canvas canvas;
     public SpriteRenderer spriteRenderer;
 
+    public UpgradesHandler upgradesHandler;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,7 +23,9 @@ public class PauseHandler : MonoBehaviour
                 ResumeGame();
             } else
             {
-                PauseGame();
+                if (!upgradesHandler.InUpgrades()) {
+                    PauseGame();
+                }
             }
         }
     }
