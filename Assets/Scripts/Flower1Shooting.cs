@@ -6,8 +6,10 @@ public class Flower1Shooting : MonoBehaviour
     public Transform seedBulletPos;
     public int bulletsShoot = 1;
     public float fireDelay;
-    private float timer = 0;
+    private float timer = 0.5f;
     private GameObject player;
+
+    private float timerAlive = 11;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,6 +19,13 @@ public class Flower1Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timerAlive -= Time.deltaTime;
+        if(timerAlive <= 0)
+        {
+            ChangeDelay();
+            timerAlive = 10;
+        }
+        
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
         if(distance < 11) //Hardcoding should be changed maybe.
@@ -63,5 +72,10 @@ public class Flower1Shooting : MonoBehaviour
         float sin = Mathf.Sin(rad);
 
         return new Vector2(basedir.x * cos - basedir.y * sin, basedir.x * sin + basedir.y * cos);
+    }
+
+    void ChangeDelay()
+    {
+        fireDelay -= 0.1f;
     }
 }
