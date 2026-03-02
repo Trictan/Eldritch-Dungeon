@@ -8,17 +8,17 @@ public class RangedWeapon : MonoBehaviour
 
     public GameObject bullet;
     public Transform BulletTransform;
-    public bool canFire;
     private float timer;
-    public float attackDelay;
-    public float dmg;
-    public float projectileSpeed;
+
     public Transform projectileFolder;
     private Animator animator;
+
+    private PlayerStats playerStats;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        playerStats = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerStats>();
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         animator = BulletTransform.gameObject.GetComponent<Animator>();
     }
@@ -35,22 +35,22 @@ public class RangedWeapon : MonoBehaviour
         float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
 
         transform.rotation = Quaternion.Euler(0,0,rotZ);
-        if(!canFire)
+        if(!playerStats.canFire)
         {
             timer +=Time.deltaTime;
-            animator.SetFloat("attackDelay", timer/attackDelay);
-            if(timer>attackDelay)
+            animator.SetFloat("attackDelay", timer/playerStats.attackDelay);
+            if(timer>playerStats.attackDelay)
             {
-                canFire=true;
-                animator.SetBool("canFire", canFire);
+                playerStats.canFire=true;
+                animator.SetBool("canFire", playerStats.canFire);
                 timer=0;
             }
         }
 
-        else if (Input.GetMouseButton(0) && canFire)
+        else if (Input.GetMouseButton(0) && playerStats.canFire)
         {
-            canFire = false;
-            animator.SetBool("canFire", canFire);
+            playerStats.canFire = false;
+            animator.SetBool("canFire", playerStats.canFire);
             animator.SetTrigger("fire");
             //anim here
         
