@@ -25,7 +25,8 @@ private GameObject player;
         {
             print("super important super error, nothing will work, unfixable and broken, never let this be printed!");
         }
-        RangedWeapon pc = player.GetComponentInChildren<RangedWeapon>();
+
+        PlayerStats pc = player.GetComponentInChildren<PlayerStats>();
         
         if(pc!=null)
         {

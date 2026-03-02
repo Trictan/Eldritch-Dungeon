@@ -20,12 +20,32 @@ public class UpgradesHandler : MonoBehaviour
 
     GameObject selectedButton;
 
+    private PlayerStats playerStats;
+
+    private Upgrade[] potentialUpgrades;
+
     void Start()
     {
+        playerStats = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerStats>();
         setVisible(false);
     }
 
-   
+    private void setStat(string stat, object value)
+    {
+        switch(stat)
+        {
+            case "dmg": playerStats.dmg = (float) value; break;
+            case "projectileSpeed": playerStats.projectileSpeed = (float) value; break;
+            case "projectileHits": playerStats.projectileHits = (int) value; break;
+            case "attackDelay": playerStats.attackDelay = (float) value; break;
+        }
+    }
+
+    private void createUpgradePool()
+    {
+        
+    }
+
     public void setSelected(GameObject button) 
     {
         resetSelection();
@@ -98,4 +118,32 @@ public class UpgradesHandler : MonoBehaviour
         print(selectedButton.name);
     }
 
+}
+
+class Upgrade<T> {
+   
+    public string name;
+    public int mutiplier;
+    public float offset;
+    public float offsetMultiplier;
+    public T currentValue;
+
+    // min or max
+    public T capValue;
+
+    // toggle, increase, decrease
+    public int type;
+
+    public string description;
+   
+    public Upgrade(string name, float offset, float offsetMultiplier, T currentValue, T capValue, int type, string description) {
+        this.name = name;
+        this.mutiplier = mutiplier;
+        this.offset=offset;
+        this.offsetMultiplier=offsetMultiplier;
+        this.currentValue=currentValue;
+        this.capValue=capValue;
+        this.type=type;
+        this.description=description;
+    }
 }

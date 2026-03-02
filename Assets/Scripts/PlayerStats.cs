@@ -11,6 +11,11 @@ public class PlayerStats : MonoBehaviour
     public int experience;
     public int lvl;
 
+    public bool canFire;
+    public float attackDelay;
+    public float dmg;
+    public float projectileSpeed;
+
     public int projectileHits;
     // will always be at least 1 hit as it checks at trigger
  
