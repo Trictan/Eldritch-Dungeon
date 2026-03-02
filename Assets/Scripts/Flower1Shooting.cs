@@ -19,6 +19,13 @@ public class Flower1Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timerAlive -= Time.deltaTime;
+        if(timerAlive <= 0)
+        {
+            ChangeDelay();
+            timerAlive = 10;
+        }
+        
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
         if(distance < 7) //Hardcoding should be changed maybe.
@@ -30,12 +37,6 @@ public class Flower1Shooting : MonoBehaviour
                 timer = fireDelay;
                 shoot();
             }
-        }
-
-        timerAlive -= Time.deltaTime;
-        if(timerAlive <= 0)
-        {
-            ChangeDelay();
         }
     }
 
