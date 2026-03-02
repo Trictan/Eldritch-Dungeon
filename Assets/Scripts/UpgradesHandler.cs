@@ -22,7 +22,6 @@ public class UpgradesHandler : MonoBehaviour
 
     private PlayerStats playerStats;
 
-    private Upgrade[] potentialUpgrades;
 
     void Start()
     {

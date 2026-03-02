@@ -3555,6 +3555,10 @@ MonoBehaviour:
   iFrameDuration: 0.5
   experience: 0
   lvl: 0
+  canFire: 1
+  attackDelay: 0.5
+  dmg: 1
+  projectileSpeed: 10
   projectileHits: 1
 --- !u!114 &1281599597
 MonoBehaviour:
