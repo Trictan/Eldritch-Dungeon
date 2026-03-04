@@ -20,4 +20,11 @@ public class Scene_switch : MonoBehaviour
         PauseHandler.paused=false;
         ChangeToScene("Menu");
     }
+
+    //----Don't touch!!!---------
+    void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+    }
 }
