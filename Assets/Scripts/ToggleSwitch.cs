@@ -35,6 +35,7 @@ public class ToggleSlider : MonoBehaviour
         handleOnPos = new Vector2(1 * (slider.GetComponent<RectTransform>().rect.width - handle.rect.width), handleOffPos.y);
 
         isOn = PlayerPrefs.GetInt(command, 1) == 1;
+        
         // Set the correct settings
         slider.value = isOn ? 1f : 0f;
         // Init visuals
@@ -83,10 +84,5 @@ public class ToggleSlider : MonoBehaviour
 
         slider.value = targetValue;
         if (background) background.color = targetColor;
-    }
-
-    public bool getStatus()
-    {
-        return isOn;
     }
 }
