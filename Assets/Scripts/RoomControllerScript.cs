@@ -129,8 +129,19 @@ public class RoomControllerScript : MonoBehaviour
         return state;
     }
 
+    public static void DeleteAllChildren(Transform transform)
+    {
+        for (var i = transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(transform.GetChild(i).gameObject);
+        }
+    }
+
     void nextRoom()
     {
+        GameObject pParent = GameObject.FindGameObjectWithTag("projectileParent");
+        DeleteAllChildren(pParent.transform);
+
         Variables.Object(doorLast).Set("state",2);
 
         int r = UnityEngine.Random.Range(1,4); // 1-3
