@@ -6,10 +6,13 @@ public class PauseHandler : MonoBehaviour
     public Canvas canvas;
     public SpriteRenderer spriteRenderer;
 
+    private GameObject cursor;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         setVisible(false);
+        cursor = GameObject.FindGameObjectWithTag("cursor");
     }
 
     void Update()
@@ -37,6 +40,7 @@ public class PauseHandler : MonoBehaviour
         Time.timeScale = 0;
         setVisible(true);
         paused=true;
+        cursor.GetComponent<CursorManager>().setActiveCursor(true);
     }
 
     public void ResumeGame()
@@ -44,6 +48,7 @@ public class PauseHandler : MonoBehaviour
         Time.timeScale = 1;
         setVisible(false);
         paused=false;
+        cursor.GetComponent<CursorManager>().setActiveCursor(false);
     }
 
 }
