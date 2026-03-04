@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 386990764}
   m_Layer: 0
   m_Name: Projectiles
-  m_TagString: Untagged
+  m_TagString: projectileParent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4866,6 +4866,10 @@ PrefabInstance:
       propertyPath: attackDelay
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: -3149624482373838590, guid: 33041d377bb60c748a0f839981bea6b5, type: 3}
+      propertyPath: projectileFolder
+      value: 
+      objectReference: {fileID: 386990764}
     - target: {fileID: 1054875192588013690, guid: 33041d377bb60c748a0f839981bea6b5, type: 3}
       propertyPath: m_SortingOrder
       value: 2

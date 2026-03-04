@@ -40,7 +40,7 @@ private GameObject player;
         rb=GetComponent<Rigidbody2D>();
         mousePos=mainCam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 direction = mousePos-player.transform.position;
-        Vector3 rotation = transform.position-mousePos;
+        Vector3 rotation = player.transform.position-mousePos;
         rb.linearVelocity = new Vector2(direction.x, direction.y).normalized*speed;
         float rot= Mathf.Atan2(rotation.y, rotation.x)*Mathf.Rad2Deg;
         transform.rotation=Quaternion.Euler(0,0,rot+180);
