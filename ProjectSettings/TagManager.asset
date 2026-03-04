@@ -12,6 +12,8 @@ TagManager:
   - enemyBullet
   - XpBar
   - projectileParent
+  - cursor
+  - musicManager
   layers:
   - Default
   - TransparentFX

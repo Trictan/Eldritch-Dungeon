@@ -3,13 +3,13 @@ using Unity.VisualScripting;
 
 public class LifeSystem : MonoBehaviour
 {   
-    public float maxHealth;
+    public float startHealth;
     float currentHealth;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-    currentHealth=maxHealth;
+    currentHealth=startHealth;
     }
 
     // Update is called once per frame
@@ -53,12 +53,20 @@ public class LifeSystem : MonoBehaviour
         }
     }
 
+    public void addHealth(float addedHealth)
+    {
+        if (gameObject.CompareTag("player"))
+        {
+            currentHealth = Mathf.Clamp(currentHealth + addedHealth, 0f, 6f);
+        }
+    }
+
     public float GetCurrentHealth()
     {
         return currentHealth;
     }
     public float GetMaxHealth()
     {
-        return maxHealth;
+        return startHealth;
     }
 }

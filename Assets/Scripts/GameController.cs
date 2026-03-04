@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
             }
         }
 
-        floor=0;
+        floor=1;
         traversedRooms=0;
     }
 
@@ -40,6 +40,10 @@ public class GameController : MonoBehaviour
         {
             
             print(isClear());
+            if(isClear()){    
+                traversedRooms = traversedRooms + 1;
+            }
+
             roomController.setSprites();
             previousRoomStatus = isClear();
         }
@@ -96,10 +100,26 @@ public class GameController : MonoBehaviour
         enemyInstance.transform.parent = enemiesParentNode.transform;
     }
     
+    int NrOfEnemies(){
+        int max;
+        if (floor<=3){
+            max = traversedRooms * floor;
+            max = max + 1;
+        }
+        else{
+            max = traversedRooms * (floor - Mathf.RoundToInt(floor/2));
+        };
+
+        int nr = Random.Range(floor, max);
+        return nr;
+        
+    }
+
+
     public void SpawnEnemies() // add parameters to decide what enemies, how many, etc
     {
         int count = 0;
-        while (count<3)
+        while (count<NrOfEnemies())
         {
             int r = Random.Range(0, spawnPoints.Count);
             Vector3 spawnPoint = spawnPoints[r];

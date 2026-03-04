@@ -7,6 +7,7 @@ public class MusicManager : MonoBehaviour
     public AudioSource loopSource;
 
     private static MusicManager currentMusic;
+    public static bool musicOn = true;
 
     void Awake()
     {
@@ -21,6 +22,8 @@ public class MusicManager : MonoBehaviour
 
     void Start()
     {
+        // Check if music on/off
+        UpdateVolume();
         PlayMusic();
     }
 
@@ -32,8 +35,22 @@ public class MusicManager : MonoBehaviour
         return;
         }
         
-        double t = AudioSettings.dspTime + 0.1; // liten margin för säker buffer
+        double t = AudioSettings.dspTime + 0.05; // liten margin för säker buffer
         introSource.PlayScheduled(t);
         loopSource.PlayScheduled(t + introSource.clip.length);
+    }
+
+    public void ToggleMusic()
+    {
+        musicOn = !musicOn;
+        PlayerPrefs.SetInt("MusicOn", musicOn ? 1 : 0);
+        UpdateVolume();
+    }
+
+    private void UpdateVolume()
+    {
+        float vol = musicOn ? 1f : 0f;
+        introSource.volume = vol;
+        loopSource.volume = vol;
     }
 }
