@@ -26,7 +26,11 @@ public class LifeSystem : MonoBehaviour
 
         }
         
-        
+        if (TryGetComponent<AudioSource>(out AudioSource damageSound))
+        {
+            damageSound.Play();
+        }
+
         currentHealth -= damage;
         //Debug.Log(gameObject.name + " took " + damage + " damage. Health: " + currentHealth);
         
