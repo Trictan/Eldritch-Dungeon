@@ -28,8 +28,10 @@ public class UpgradesHandler : MonoBehaviour
     Dictionary<string, string> upgradeDescriptions =
     new Dictionary<string, string>
     {
-        {"projectileHits", "Hits additional enemies."},
-        {"attackDelay", "Shortens delay between attacks."}
+        {"projectileHits", "Projectiles hit additional enemies."},
+        {"attackDelay", "Shorten delay between attacks."},
+        {"dmg", "Increase damage dealt to enemies."},
+        {"movespeed", "Increase player movement speed."}
     };
 
     Dictionary<string, Dictionary<string, float>> upgrades =
@@ -55,7 +57,15 @@ public class UpgradesHandler : MonoBehaviour
                 {"capValue", 2.5f},
                 {"offset", 0f},
                 {"multiplier", 1.2f},
-                {"increasing", 0f},
+                {"increasing", 1f},
+            }
+        },
+        {"moveSpeed", new Dictionary<string, float>
+            {
+                {"capValue", 5f},
+                {"offset", 1f},
+                {"multiplier", 1f},
+                {"increasing", 1f},
             }
         },
     };
@@ -82,6 +92,7 @@ public class UpgradesHandler : MonoBehaviour
             case "projectileSpeed": playerStats.projectileSpeed = (float) value; break;
             case "projectileHits": playerStats.projectileHits = (int) value; break;
             case "attackDelay": playerStats.attackDelay = (float) value; break;
+            case "moveSpeed": playerStats.movementSpeed = (float) value; break;
         }
     }
 
@@ -93,6 +104,7 @@ public class UpgradesHandler : MonoBehaviour
             case "projectileSpeed": return (float) playerStats.projectileSpeed;
             case "projectileHits": return (float) playerStats.projectileHits;
             case "attackDelay": return (float) playerStats.attackDelay;
+            case "moveSpeed": return (float) playerStats.movementSpeed;
         }
         return 0f;
     }
@@ -108,7 +120,7 @@ public class UpgradesHandler : MonoBehaviour
             Dictionary<string, float> statDictionary = upgrades[statName];
             bool increasing =  floatToBool(statDictionary["increasing"]);
             float statCapVal = statDictionary["capValue"];
-            print("Stat " + statVal + " cap:" + statCapVal + " t:" + increasing);
+            print(statName + " " + statVal + " cap:" + statCapVal + " t:" + increasing);
             if (increasing)
             {
                 if (statVal == statCapVal) {continue;} // reached cap (increasing), skips
@@ -119,7 +131,7 @@ public class UpgradesHandler : MonoBehaviour
             upgradePool.Add(statName);
         }
 
-        // handle upgrades < 2 ...
+        if (upgradePool.Count < 2) {CloseUpgrades(false); return;}; // tell level system character maxed (?)
 
         int r1 = Random.Range(0,upgradePool.Count);
         string stat1Name = upgradePool[r1];
@@ -129,16 +141,18 @@ public class UpgradesHandler : MonoBehaviour
         string stat2Name = upgradePool[r2];
         upgradePool.RemoveAt(r2);
 
-        leftButton.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = stat1Name;
-        rightButton.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = stat2Name;
+        leftButton.name = stat1Name;
+        rightButton.name = stat2Name;
+
+        // could be replaced with set sprite from dictionary !
+        leftButton.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = upgradeDescriptions[stat1Name];
+        rightButton.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = upgradeDescriptions[stat2Name];
     }
-
-
 
     public bool floatToBool(float val)
     {
         // 0=false, otherwise true
-        return val==0? false : true;
+        return val==0f? false : true;
     }
 
     public void setSelected(GameObject button) 
@@ -199,20 +213,20 @@ public class UpgradesHandler : MonoBehaviour
         setButtonBg(selectButton, COLOR_LOCKED);
     }
 
-    public void CloseUpgrades()
+    public void CloseUpgrades(bool val = true)
     {
-        if(selectedButton==null) {return;}
+        if(selectedButton==null && val) {return;}
         resetSelection();
         Time.timeScale = 1;
         setVisible(false);
         inUpgrades=false;
-        Upgrade();
+        if (val) {Upgrade();}
     }
 
     public void Upgrade()
     {
         print("upgrade()");
-        string stat = selectedButton.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text;
+        string stat = selectedButton.name;
         setStat(stat, calcNewValue(stat));
     }
 
