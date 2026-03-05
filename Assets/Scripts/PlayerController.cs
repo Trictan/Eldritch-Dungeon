@@ -4,7 +4,6 @@ using UnityEngine;
 public class PlayerCtrl: MonoBehaviour
 {
     public RoomControllerScript roomControllerScript;
-    public float moveSpeed = 3f;
     private Rigidbody2D rb;
     private Animator animator;
     private Vector2 moveVector;
@@ -46,7 +45,7 @@ public class PlayerCtrl: MonoBehaviour
 
     void FixedUpdate ()
     {
-        rb.linearVelocity = moveVector * moveSpeed;
+        rb.linearVelocity = moveVector * playerStats.movementSpeed;
 
         if(iFrame) {
             timer +=Time.deltaTime;

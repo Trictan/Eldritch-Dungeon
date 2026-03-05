@@ -9,8 +9,8 @@ public class Xp_bar : MonoBehaviour
     public GameObject player;
 
     public Image levelUpSymbol;
-    private int maxXpLevel = 0;
-    private int minXpLevel = 0;
+    private float maxXpLevel = 0;
+    private float minXpLevel = 0;
     private int level = 0;
     
     void Start()

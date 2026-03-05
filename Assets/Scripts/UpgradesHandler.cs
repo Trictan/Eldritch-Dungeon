@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using TMPro;
+
 
 
 public class UpgradesHandler : MonoBehaviour
@@ -22,6 +25,40 @@ public class UpgradesHandler : MonoBehaviour
 
     private PlayerStats playerStats;
 
+    Dictionary<string, string> upgradeDescriptions =
+    new Dictionary<string, string>
+    {
+        {"projectileHits", "Hits additional enemies."},
+        {"attackDelay", "Shortens delay between attacks."}
+    };
+
+    Dictionary<string, Dictionary<string, float>> upgrades =
+    new Dictionary<string, Dictionary<string, float>>{
+        {"projectileHits", new Dictionary<string, float>
+            {
+                {"capValue", 3f},
+                {"offset", 1f},
+                {"multiplier", 1f},
+                {"increasing", 1f},
+            }
+        },
+        {"attackDelay", new Dictionary<string, float>
+            {
+                {"capValue", 0.15f},
+                {"offset", -0.1f},
+                {"multiplier", 1f},
+                {"increasing", 0f},
+            }
+        },
+        {"dmg", new Dictionary<string, float>
+            {
+                {"capValue", 2.5f},
+                {"offset", 0f},
+                {"multiplier", 1.2f},
+                {"increasing", 0f},
+            }
+        },
+    };
 
     void Start()
     {
@@ -29,7 +66,15 @@ public class UpgradesHandler : MonoBehaviour
         setVisible(false);
     }
 
-    private void setStat(string stat, object value)
+    // ..would not fly in prod..
+    // lets call it proof of concept.
+    private void AddUpgrades()
+    {
+        // string name, float offset, float currentValue, float capValue, int type, 
+        // float offsetMultiplier = 1, string description="No description.", int minLevel=0
+    }
+
+    private void setStat(string stat, float value)
     {
         switch(stat)
         {
@@ -40,9 +85,60 @@ public class UpgradesHandler : MonoBehaviour
         }
     }
 
+    private float getStat(string stat)
+    {
+        switch(stat)
+        {
+            case "dmg": return (float) playerStats.dmg;
+            case "projectileSpeed": return (float) playerStats.projectileSpeed;
+            case "projectileHits": return (float) playerStats.projectileHits;
+            case "attackDelay": return (float) playerStats.attackDelay;
+        }
+        return 0f;
+    }
+
     private void createUpgradePool()
     {
-        
+        List<string> upgradePool = new List<string>();
+
+        foreach (var stat in upgrades)
+        {
+            string statName = stat.Key;
+            float statVal = getStat(statName);
+            Dictionary<string, float> statDictionary = upgrades[statName];
+            bool increasing =  floatToBool(statDictionary["increasing"]);
+            float statCapVal = statDictionary["capValue"];
+            print("Stat " + statVal + " cap:" + statCapVal + " t:" + increasing);
+            if (increasing)
+            {
+                if (statVal == statCapVal) {continue;} // reached cap (increasing), skips
+            } else {}
+            {
+                if (statVal == statCapVal) {continue;} // reached cap (decreasing), skips
+            }
+            upgradePool.Add(statName);
+        }
+
+        // handle upgrades < 2 ...
+
+        int r1 = Random.Range(0,upgradePool.Count);
+        string stat1Name = upgradePool[r1];
+        upgradePool.RemoveAt(r1);
+
+        int r2 = Random.Range(0,upgradePool.Count);
+        string stat2Name = upgradePool[r2];
+        upgradePool.RemoveAt(r2);
+
+        leftButton.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = stat1Name;
+        rightButton.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = stat2Name;
+    }
+
+
+
+    public bool floatToBool(float val)
+    {
+        // 0=false, otherwise true
+        return val==0? false : true;
     }
 
     public void setSelected(GameObject button) 
@@ -97,6 +193,7 @@ public class UpgradesHandler : MonoBehaviour
         Time.timeScale = 0;
         setVisible(true);
         inUpgrades=true;
+        createUpgradePool();
 
         selectedButton=null;
         setButtonBg(selectButton, COLOR_LOCKED);
@@ -114,35 +211,61 @@ public class UpgradesHandler : MonoBehaviour
 
     public void Upgrade()
     {
-        print(selectedButton.name);
+        print("upgrade()");
+        string stat = selectedButton.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text;
+        setStat(stat, calcNewValue(stat));
+    }
+
+    private float calcNewValue(string statName) {
+        print("calcNewValue()");
+        Dictionary<string, float> statDictionary = upgrades[statName];
+        float statVal = getStat(statName);
+        float multiplier = statDictionary["multiplier"];
+        float offset = statDictionary["offset"];
+        float newVal = statVal*multiplier + offset;
+        print(statName + ", " + statVal + ", " + newVal);
+        bool increasing = floatToBool(statDictionary["increasing"]);
+        float statCapVal = statDictionary["capValue"];
+        if (increasing)
+        {
+            newVal = Mathf.Min(newVal, statCapVal);
+        } else
+        {
+            newVal = Mathf.Max(newVal, statCapVal);
+        }
+        return newVal;
     }
 
 }
 
-class Upgrade<T> {
+class Upgrade {
    
     public string name;
-    public int mutiplier;
+    public float multiplier;
     public float offset;
     public float offsetMultiplier;
-    public T currentValue;
+    public float currentValue;
 
     // min or max
-    public T capValue;
+    public float capValue;
 
     // toggle, increase, decrease
+    // 0         1         2
     public int type;
 
     public string description;
+
+    public int minLevel;
    
-    public Upgrade(string name, float offset, float offsetMultiplier, T currentValue, T capValue, int type, string description) {
+    public Upgrade(string name, float multiplier, float offset, float currentValue, float capValue, int type, float offsetMultiplier = 1, string description="No description.", int minLevel=0) {
         this.name = name;
-        this.mutiplier = mutiplier;
+        this.multiplier = multiplier;
         this.offset=offset;
-        this.offsetMultiplier=offsetMultiplier;
         this.currentValue=currentValue;
         this.capValue=capValue;
         this.type=type;
+        this.offsetMultiplier=offsetMultiplier;
         this.description=description;
+        this.minLevel=minLevel;
     }
 }
