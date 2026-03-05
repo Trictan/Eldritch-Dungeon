@@ -19,7 +19,7 @@ public class Flower1Shooting : MonoBehaviour
     {
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
-        if(distance < 7) //Hardcoding should be changed maybe.
+        if(distance < 133) //Hardcoding should be changed maybe.
         {
            timer -= Time.deltaTime;
 
@@ -47,6 +47,34 @@ public class Flower1Shooting : MonoBehaviour
             SpawnBullet(RotateVector(baseDir, -spreadAngle));
             SpawnBullet(baseDir);
             SpawnBullet(RotateVector(baseDir, spreadAngle));
+        }
+        if(bulletsShoot == 24) //väldigt fin kod här
+        {
+            float spreadAngle = 15; 
+            SpawnBullet(RotateVector(baseDir, 11*-spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 10*-spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 9*-spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 8*-spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 7*-spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 6*-spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 5*-spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 4*-spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 3*-spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 2*-spreadAngle));
+            SpawnBullet(RotateVector(baseDir, -spreadAngle));
+            SpawnBullet(baseDir);
+            SpawnBullet(RotateVector(baseDir, spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 2*spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 3*spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 4*spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 5*spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 6*spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 7*spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 8*spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 9*spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 10*spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 11*spreadAngle));
+            SpawnBullet(RotateVector(baseDir, 12*spreadAngle));
         }
     }
 
