@@ -7,7 +7,19 @@ public class MusicManager : MonoBehaviour
     public AudioSource loopSource;
 
     private static MusicManager currentMusic;
-    public static bool musicOn = true;
+    private static bool musicOn = true;
+
+    public static MusicManager Instance
+    {
+        get
+        {
+            if (currentMusic == null)
+            {
+                currentMusic = FindObjectOfType<MusicManager>();
+            }
+            return currentMusic;
+        }
+    }
 
     void Awake()
     {

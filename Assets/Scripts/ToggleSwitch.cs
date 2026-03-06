@@ -44,10 +44,13 @@ public class ToggleSlider : MonoBehaviour
         handle.anchoredPosition = isOn ? handleOnPos : handleOffPos;
     }
 
-    // Denna metod kopplas till en Button eller IPointerClick
+    // Conected to the button on top of the slider
     public void Toggle()
     {
         isOn = !isOn;
+
+        if(command == "SoundOn") SoundEffectManager.Instance.ToggleSoundEffect();
+        if(command == "MusicOn") MusicManager.Instance.ToggleMusic();
 
         // Stoppa tidigare animation
         if (currentAnim != null) StopCoroutine(currentAnim);

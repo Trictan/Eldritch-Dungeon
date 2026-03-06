@@ -3,7 +3,8 @@ using UnityEngine;
 public class SoundEffectManager : MonoBehaviour
 {
     public static SoundEffectManager Instance;
-    private AudioSource audioSource;
+    public static bool soundOn = true;
+    
     
     [Header("Enemy")]
     public AudioClip enemyDamage;
@@ -19,10 +20,9 @@ public class SoundEffectManager : MonoBehaviour
     public AudioClip doorClose;
     public AudioClip doorOpen;
 
-
-    private bool soundOn = true;
-    [Header("Volume")]
-    [SerializeField] private float vol = 1f;
+    [Header("Sound")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private float volume = 1f;
 
     void Awake()
     {
@@ -42,14 +42,14 @@ public class SoundEffectManager : MonoBehaviour
     {
         if (!soundOn) return;
 
-        audioSource.PlayOneShot(clip, vol);
+        audioSource.PlayOneShot(clip, volume);
     }
 
     public void Play3DSound(AudioClip clip, Vector3 pos)
     {
         if (!soundOn) return;
 
-        AudioSource.PlayClipAtPoint(clip, pos, vol);
+        AudioSource.PlayClipAtPoint(clip, pos, volume);
     }
 
     //-------------Enemy Sounds--------------------------

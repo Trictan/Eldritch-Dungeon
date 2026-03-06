@@ -47,7 +47,7 @@ public class GameController : MonoBehaviour
             roomController.setSprites();
             previousRoomStatus = isClear();
         }
-
+        
         if (!isClear()) {return;}
 
         int levelUp = player.GetComponent<LevelSystem>().getGainedLevels();
