@@ -25,10 +25,13 @@ public class LifeSystem : MonoBehaviour
             pc.SetiFrame(true);
 
         }
-        
-        if (TryGetComponent<AudioSource>(out AudioSource damageSound))
+        if (gameObject.CompareTag("enemy"))
         {
-            damageSound.Play();
+            SoundEffectManager.Instance.EnemyTakeDamage(transform.position);
+        }
+        if (gameObject.CompareTag("player"))
+        {
+            SoundEffectManager.Instance.PlayerTakeDamage(transform.position);
         }
 
         currentHealth -= damage;
