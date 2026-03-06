@@ -37,6 +37,7 @@ public class Xp_bar : MonoBehaviour
         level = player.GetComponent<LevelSystem>().getLevel();
         LevelText.text = "Level " + level;
 
+        SoundEffectManager.Instance.LevelUp();
         symbolVisability();
 
         //Debug.Log("Updated Xp bar");

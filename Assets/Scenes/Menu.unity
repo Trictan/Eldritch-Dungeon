@@ -2386,7 +2386,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDamage: {fileID: 8300000, guid: b11ef18d4c1fe794f9893a4b0a3271af, type: 3}
+  enemyDie: {fileID: 8300000, guid: b11ef18d4c1fe794f9893a4b0a3271af, type: 3}
   playerDamage: {fileID: 8300000, guid: a11e7bf4eccb17c478432575233a101f, type: 3}
+  playerDie: {fileID: 8300000, guid: a11e7bf4eccb17c478432575233a101f, type: 3}
+  levelUp: {fileID: 8300000, guid: 061a39bb86e7c6d4c8a4ff4f99a56e1b, type: 3}
+  buttonClick: {fileID: 8300000, guid: 6fa13617594c1f643a08c0504d22d61a, type: 3}
+  doorClose: {fileID: 8300000, guid: e852d6ea3e4bdcd49af287e8c437280b, type: 3}
+  doorOpen: {fileID: 8300000, guid: 08f577118586d8f46b53a7a2ac3fd83e, type: 3}
+  vol: 1
 --- !u!4 &863511002
 Transform:
   m_ObjectHideFlags: 0

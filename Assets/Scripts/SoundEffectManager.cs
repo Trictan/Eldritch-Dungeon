@@ -3,11 +3,26 @@ using UnityEngine;
 public class SoundEffectManager : MonoBehaviour
 {
     public static SoundEffectManager Instance;
+    private AudioSource audioSource;
+    
+    [Header("Enemy")]
     public AudioClip enemyDamage;
-    public AudioClip playerDamage;
-    private bool soundOn = true;
+    public AudioClip enemyDie;
 
-    private float vol = 1f;
+    [Header("Player")]
+    public AudioClip playerDamage;
+    public AudioClip playerDie;
+
+    [Header("Game")]
+    public AudioClip levelUp;
+    public AudioClip buttonClick;
+    public AudioClip doorClose;
+    public AudioClip doorOpen;
+
+
+    private bool soundOn = true;
+    [Header("Volume")]
+    [SerializeField] private float vol = 1f;
 
     void Awake()
     {
@@ -22,20 +37,63 @@ public class SoundEffectManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void EnemyTakeDamage(Vector3 pos)
+    //-----------3D = things that position is important, 2D = when the place the sound comes from dosent really matter----------
+    public void Play2DSound(AudioClip clip)
     {
-        AudioSource.PlayClipAtPoint(enemyDamage, pos, vol);
-    }
-    public void PlayerTakeDamage(Vector3 pos)
-    {
-        AudioSource.PlayClipAtPoint(playerDamage, pos, vol);
+        if (!soundOn) return;
+
+        audioSource.PlayOneShot(clip, vol);
     }
 
+    public void Play3DSound(AudioClip clip, Vector3 pos)
+    {
+        if (!soundOn) return;
+
+        AudioSource.PlayClipAtPoint(clip, pos, vol);
+    }
+
+    //-------------Enemy Sounds--------------------------
+    public void EnemyTakeDamage(Vector3 pos)
+    {
+        Play3DSound(enemyDamage, pos);
+    }
+    public void EnemyDie(Vector3 pos)
+    {
+        Play3DSound(enemyDie, pos);
+    }
+
+    //---------------Player sounds--------------------
+    public void PlayerTakeDamage(Vector3 pos)
+    {
+        Play3DSound(playerDamage, pos);
+    }
+    public void PlayerDie(Vector3 pos)
+    {
+        Play3DSound(playerDie, pos);
+    }
+
+    //------------Game sound-----------------------
+    public void LevelUp()
+    {
+        Play2DSound(levelUp);
+    }
+    public void ButtonClick()
+    {
+        Play2DSound(buttonClick);
+    }
+    public void DoorClose()
+    {
+        Play2DSound(doorClose);
+    }
+    public void DoorOpen()
+    {
+        Play2DSound(doorOpen);
+    }
+
+    //-------Help setting---------
     public void ToggleSoundEffect()
     {
         soundOn = !soundOn;
         PlayerPrefs.SetInt("SoundOn", soundOn ? 1 : 0);
-        //Sets the music
-        float vol = soundOn ? 1f : 0f;
     }
 }
