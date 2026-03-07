@@ -3,8 +3,6 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
 
-
-
 public class UpgradesHandler : MonoBehaviour
 {
 
@@ -223,7 +221,6 @@ public class UpgradesHandler : MonoBehaviour
         Time.timeScale = 1;
         setVisible(false);
         inUpgrades=false;
-        Upgrade();
         cursor.GetComponent<CursorManager>().setActiveCursor(false);
         if (val) {Upgrade();}
     }
@@ -255,36 +252,4 @@ public class UpgradesHandler : MonoBehaviour
         return newVal;
     }
 
-}
-
-class Upgrade {
-   
-    public string name;
-    public float multiplier;
-    public float offset;
-    public float offsetMultiplier;
-    public float currentValue;
-
-    // min or max
-    public float capValue;
-
-    // toggle, increase, decrease
-    // 0         1         2
-    public int type;
-
-    public string description;
-
-    public int minLevel;
-   
-    public Upgrade(string name, float multiplier, float offset, float currentValue, float capValue, int type, float offsetMultiplier = 1, string description="No description.", int minLevel=0) {
-        this.name = name;
-        this.multiplier = multiplier;
-        this.offset=offset;
-        this.currentValue=currentValue;
-        this.capValue=capValue;
-        this.type=type;
-        this.offsetMultiplier=offsetMultiplier;
-        this.description=description;
-        this.minLevel=minLevel;
-    }
 }
