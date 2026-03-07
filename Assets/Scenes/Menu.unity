@@ -1997,7 +1997,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 8e8a0b9b2f05c2b498973d4e60384e64, type: 3}
+  m_Resource: {fileID: 8300000, guid: 8d835ea716ab52d46a551bbe5f5e5d7c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2431,14 +2431,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f311dbd05ebed4184da69b0dc9e4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDamage: {fileID: 8300000, guid: b11ef18d4c1fe794f9893a4b0a3271af, type: 3}
-  enemyDie: {fileID: 8300000, guid: b11ef18d4c1fe794f9893a4b0a3271af, type: 3}
-  playerDamage: {fileID: 8300000, guid: a11e7bf4eccb17c478432575233a101f, type: 3}
-  playerDie: {fileID: 8300000, guid: a11e7bf4eccb17c478432575233a101f, type: 3}
-  levelUp: {fileID: 8300000, guid: 061a39bb86e7c6d4c8a4ff4f99a56e1b, type: 3}
-  buttonClick: {fileID: 8300000, guid: 6fa13617594c1f643a08c0504d22d61a, type: 3}
-  doorClose: {fileID: 8300000, guid: e852d6ea3e4bdcd49af287e8c437280b, type: 3}
-  doorOpen: {fileID: 8300000, guid: 08f577118586d8f46b53a7a2ac3fd83e, type: 3}
+  enemyDamage: {fileID: 8300000, guid: 00a93d9d49aa7bd458382ea3e1524e8c, type: 3}
+  enemyDie: {fileID: 8300000, guid: da1f9e9fd2745fa499d795c37dfce5e0, type: 3}
+  playerDamage: {fileID: 8300000, guid: 13fb8dcd208065f428070c13334abb6c, type: 3}
+  playerDie: {fileID: 8300000, guid: 13fb8dcd208065f428070c13334abb6c, type: 3}
+  levelUp: {fileID: 8300000, guid: 8621338eb58e18c47bdd5dc27173e411, type: 3}
+  buttonClick: {fileID: 8300000, guid: 102dc6b7b7357ea4f8af09e651524890, type: 3}
+  doorClose: {fileID: 8300000, guid: 36da917730ec3604893aeb34f3ac43a6, type: 3}
+  doorOpen: {fileID: 8300000, guid: 98364fd9970942640b3701af05b9aec8, type: 3}
   audioSource: {fileID: 863511003}
   volume: 1
 --- !u!4 &863511002

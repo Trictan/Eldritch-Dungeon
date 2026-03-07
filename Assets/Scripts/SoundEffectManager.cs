@@ -49,7 +49,7 @@ public class SoundEffectManager : MonoBehaviour
     {
         if (!soundOn) return;
 
-        AudioSource.PlayClipAtPoint(clip, pos, volume);
+        AudioSource.PlayClipAtPoint(clip, pos, volume*2); 
     }
 
     //-------------Enemy Sounds--------------------------

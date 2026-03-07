@@ -57,8 +57,6 @@ public class LifeSystem : MonoBehaviour
             SoundEffectManager.Instance.EnemyDie(transform.position);
             Destroy(gameObject);
         }
-
-        else SoundEffectManager.Instance.PlayerDie(transform.position);
     }
 
     public void addHealth(float addedHealth)
