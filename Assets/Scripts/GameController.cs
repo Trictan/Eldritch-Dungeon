@@ -46,8 +46,12 @@ public class GameController : MonoBehaviour
 
             roomController.setSprites();
             previousRoomStatus = isClear();
-        }
 
+            if(!isClear()) SoundEffectManager.Instance.DoorClose();
+            else SoundEffectManager.Instance.DoorOpen(); //Might come when the upgrade is happening
+
+        }
+        
         if (!isClear()) {return;}
 
         int levelUp = player.GetComponent<LevelSystem>().getGainedLevels();

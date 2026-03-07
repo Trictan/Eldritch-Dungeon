@@ -44,10 +44,13 @@ public class ToggleSlider : MonoBehaviour
         handle.anchoredPosition = isOn ? handleOnPos : handleOffPos;
     }
 
-    // Denna metod kopplas till en Button eller IPointerClick
+    // Conected to the button on top of the slider
     public void Toggle()
     {
         isOn = !isOn;
+
+        if(command == "SoundOn") SoundEffectManager.Instance.ToggleSoundEffect();
+        if(command == "MusicOn") MusicManager.Instance.ToggleMusic();
 
         // Stoppa tidigare animation
         if (currentAnim != null) StopCoroutine(currentAnim);
@@ -60,11 +63,13 @@ public class ToggleSlider : MonoBehaviour
         float startValue = slider.value;
         Color startColor = background.color;
         float time = 0f;
-        
 
+        Vector2 startPos = handle.anchoredPosition;
+        Vector2 targetPos = targetValue < 1 ? handleOffPos : handleOnPos;
+        
         while (time < duration)
         {
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
             float t = time / duration;
 
             // Slider value
@@ -75,8 +80,7 @@ public class ToggleSlider : MonoBehaviour
 
             // Handle position
             if (handle) {
-                if(targetValue < 1)handle.anchoredPosition = Vector2.Lerp(handleOnPos, handleOffPos, t);
-                else handle.anchoredPosition = Vector2.Lerp(handleOffPos, handleOnPos, t);
+                handle.anchoredPosition = Vector2.Lerp(startPos, targetPos, t);
             }
 
             yield return null;

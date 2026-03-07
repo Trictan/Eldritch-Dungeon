@@ -25,11 +25,6 @@ public class LifeSystem : MonoBehaviour
             pc.SetiFrame(true);
 
         }
-        
-        if (TryGetComponent<AudioSource>(out AudioSource damageSound))
-        {
-            damageSound.Play();
-        }
 
         currentHealth -= damage;
         //Debug.Log(gameObject.name + " took " + damage + " damage. Health: " + currentHealth);
@@ -37,6 +32,16 @@ public class LifeSystem : MonoBehaviour
         if(currentHealth <= 0)
         {
             Die();
+            return;
+        }
+
+        if (gameObject.CompareTag("enemy"))
+        {
+            SoundEffectManager.Instance.EnemyTakeDamage(transform.position);
+        }
+        if (gameObject.CompareTag("player"))
+        {
+            SoundEffectManager.Instance.PlayerTakeDamage(transform.position);
         }
     }
 
@@ -49,6 +54,7 @@ public class LifeSystem : MonoBehaviour
             int toAddXp = gameObject.GetComponent<Enemy_Xp>().getXp();
             xpHandeler.addXp(toAddXp);
             //Debug.Log("Xp: " + xpHandeler.getPlayerXp());
+            SoundEffectManager.Instance.EnemyDie(transform.position);
             Destroy(gameObject);
         }
     }

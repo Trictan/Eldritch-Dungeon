@@ -24,6 +24,7 @@ public class UpgradesHandler : MonoBehaviour
     GameObject selectedButton;
 
     private PlayerStats playerStats;
+    private GameObject cursor;
 
     Dictionary<string, string> upgradeDescriptions =
     new Dictionary<string, string>
@@ -74,6 +75,7 @@ public class UpgradesHandler : MonoBehaviour
     {
         playerStats = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerStats>();
         setVisible(false);
+        cursor = GameObject.FindGameObjectWithTag("cursor");
     }
 
     // ..would not fly in prod..
@@ -211,6 +213,7 @@ public class UpgradesHandler : MonoBehaviour
 
         selectedButton=null;
         setButtonBg(selectButton, COLOR_LOCKED);
+        cursor.GetComponent<CursorManager>().setActiveCursor(true);
     }
 
     public void CloseUpgrades(bool val = true)
@@ -220,6 +223,8 @@ public class UpgradesHandler : MonoBehaviour
         Time.timeScale = 1;
         setVisible(false);
         inUpgrades=false;
+        Upgrade();
+        cursor.GetComponent<CursorManager>().setActiveCursor(false);
         if (val) {Upgrade();}
     }
 
