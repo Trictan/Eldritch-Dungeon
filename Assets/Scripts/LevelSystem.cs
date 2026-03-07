@@ -3,7 +3,7 @@ using UnityEngine;
 public class LevelSystem : MonoBehaviour
 {
     private int level = 0; //Keep track of what level
-    private int goalXp = 0;
+    private float goalXp = 0;
     private int gainedLevels = 0;
 
     void Update()
@@ -22,7 +22,7 @@ public class LevelSystem : MonoBehaviour
         return level;
     }
 
-    public int getGoalXp()
+    public float getGoalXp()
     {
         return goalXp;
     }
