@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class AIChase : monobehaviour
+public class AIChase : MonoBehaviour
 {
 
     private GameObject playa;
     public float speed;
     private float distance;
 
-    // Start is called once before the first execution of Update after the monobehaviour is created
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         GameObject player=GameObject.FindWithTag("player");

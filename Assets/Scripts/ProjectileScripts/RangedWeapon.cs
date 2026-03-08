@@ -1,7 +1,7 @@
 using UnityEngine;
 using Unity.VisualScripting;
 
-public class RangedWeapon : monobehaviour
+public class RangedWeapon : MonoBehaviour
 {
     private Camera mainCam;
     private Vector3 mousePos;
@@ -15,7 +15,7 @@ public class RangedWeapon : monobehaviour
 
     private PlayerStats playerStats;
 
-    // Start is called once before the first execution of Update after the monobehaviour is created
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerStats = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerStats>();

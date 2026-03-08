@@ -1,7 +1,7 @@
 using System.Threading;
 using UnityEngine;
 
-public class MeleeScript : monobehaviour
+public class MeleeScript : MonoBehaviour
 {
     private Camera mainCam;
     private Vector3 mousePos;
@@ -17,7 +17,7 @@ public class MeleeScript : monobehaviour
     float timer=0;
 
     float atkTimer=0;
-    // Start is called once before the first execution of Update after the monobehaviour is created
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();

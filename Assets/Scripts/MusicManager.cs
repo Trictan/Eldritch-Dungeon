@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class MusicManager : monobehaviour
+public class MusicManager : MonoBehaviour
 {
     public AudioSource introSource;
     public AudioSource loopSource;

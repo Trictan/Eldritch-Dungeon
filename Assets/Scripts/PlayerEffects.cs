@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerEffects : monobehaviour
+public class PlayerEffects : MonoBehaviour
 {
     SpriteRenderer sr;
     Material mat;
