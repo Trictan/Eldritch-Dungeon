@@ -30,7 +30,8 @@ public class UpgradesHandler : MonoBehaviour
         {"projectileHits", "Projectiles hit additional enemies."},
         {"attackDelay", "Shorten delay between attacks."},
         {"dmg", "Increase damage dealt to enemies."},
-        {"moveSpeed", "Increase player movement speed."}
+        {"moveSpeed", "Increase player movement speed."},
+        {"moreProjectiles", "+1 projectiles fired"}
     };
 
     Dictionary<string, Dictionary<string, float>> upgrades =
@@ -67,6 +68,14 @@ public class UpgradesHandler : MonoBehaviour
                 {"increasing", 1f},
             }
         },
+        {"moreProjectile", new Dictionary<string, float>
+            {
+                {"capValue", 3f},
+                {"offset", 0f},
+                {"multiplier", 1.2f},
+                {"increasing", 1f},
+            }
+        },
     };
 
     void Start()
@@ -77,6 +86,7 @@ public class UpgradesHandler : MonoBehaviour
     }
 
     // ..would not fly in prod..
+    // skib skulle flygit
     // lets call it proof of concept.
     private void AddUpgrades()
     {
@@ -93,6 +103,7 @@ public class UpgradesHandler : MonoBehaviour
             case "projectileHits": playerStats.projectileHits = (int) value; break;
             case "attackDelay": playerStats.attackDelay = (float) value; break;
             case "moveSpeed": playerStats.movementSpeed = (float) value; break;
+            case "moreProjectiles": playerStats.movementSpeed = (float) value; break;
         }
     }
 
@@ -105,6 +116,7 @@ public class UpgradesHandler : MonoBehaviour
             case "projectileHits": return (float) playerStats.projectileHits;
             case "attackDelay": return (float) playerStats.attackDelay;
             case "moveSpeed": return (float) playerStats.movementSpeed;
+            case "moreProjectiles": return (float) playerStats.movementSpeed;
         }
         return 0f;
     }
