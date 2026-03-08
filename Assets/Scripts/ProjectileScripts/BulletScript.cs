@@ -13,6 +13,7 @@ private float damage;
 private int hp;
 
 private GameObject player;
+private Vector2 direction;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -67,4 +68,14 @@ private GameObject player;
             }
         }
     }
+    public void SetDirection(Vector2 dir)
+    {
+        direction = dir.normalized;
+
+        rb.linearVelocity = direction * speed;
+
+        float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, rot + 90);
+    }
+
 }
