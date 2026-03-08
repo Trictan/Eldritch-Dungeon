@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 
-public class GameController : tungtungskibscob
+public class GameController : monobehaviour
 {
     public RoomControllerScript roomController;
     public GameObject testEnemy;
