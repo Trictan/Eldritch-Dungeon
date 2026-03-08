@@ -13,6 +13,8 @@ public class PlayerCtrl: MonoBehaviour
     
     public bool iFrame;
     private float timer;
+
+    private PlayerEffects playerEffects;
 //
 
     void Start ()
@@ -20,6 +22,7 @@ public class PlayerCtrl: MonoBehaviour
         // fetch components
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        playerEffects = GetComponent<PlayerEffects>();
     }
 
     void Update ()
@@ -41,11 +44,6 @@ public class PlayerCtrl: MonoBehaviour
         {
             animator.SetBool("isWalking", false);
         }
-    }
-
-    void FixedUpdate ()
-    {
-        rb.linearVelocity = moveVector * playerStats.movementSpeed;
 
         if(iFrame) {
             timer +=Time.deltaTime;
@@ -53,9 +51,14 @@ public class PlayerCtrl: MonoBehaviour
             {
                 iFrame=false;
                 timer=0;
+                playerEffects.ClearOverlay();
             }
         }
-      
+    }
+
+    void FixedUpdate ()
+    {
+        rb.linearVelocity = moveVector * playerStats.movementSpeed;
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -70,6 +73,7 @@ public class PlayerCtrl: MonoBehaviour
     public void SetiFrame(bool val)
     {
         iFrame=val;
+        if(iFrame) playerEffects.SetOverlay(Color.red, 0.3f);
     }
     public bool GetiFrame()
     {
