@@ -9,7 +9,7 @@ public class PlayerStats : MonoBehaviour
     public float bonusDmg;
     public float iFrameDuration;
     public int experience;
-    public int lvl;
+    public int lvl=0;
 
     public bool canFire;
     public float attackDelay;

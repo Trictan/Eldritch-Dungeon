@@ -10,12 +10,22 @@ public class GameController : MonoBehaviour
     public GameObject enemiesParentNode;
 
     public List<List<GameObject>> enemies;
+    public List<GameObject> enemiesOne;
+    public List<GameObject> enemiesTwo;
+    public List<List<GameObject>> bosses;
     List<Vector3> spawnPoints = new List<Vector3>();
     int floor;
     int traversedRooms;
     bool previousRoomStatus=true;
 
     public UpgradesHandler upgradesHandler;
+
+
+    public GameObject rangedWeapon;
+    public GameObject meleeWeapon;
+    // maybe tmp
+    public GameObject playerProjectile;
+    public GameObject projectileFolder;
 
     void Start()
     {
@@ -38,22 +48,39 @@ public class GameController : MonoBehaviour
     {
         if (changeInRoomStatus())
         {
-            
-            print(isClear());
-            if(isClear()){    
-                traversedRooms = traversedRooms + 1;
-            }
 
             roomController.setSprites();
             previousRoomStatus = isClear();
 
-            if(!isClear()) SoundEffectManager.Instance.DoorClose();
-            else SoundEffectManager.Instance.DoorOpen(); //Might come when the upgrade is happening
-
+            if(isClear()) {    
+                roomCleared();
+            } 
+            else
+            {
+                roomEntered();
+            }
         }
         
-        if (!isClear()) {return;}
+        if (isClear()) {initiateLevelUp();}
+    }
 
+    // will always be at least 1 hit as it checks at trigger
+    
+    public void setRangedWeapon()
+    {
+        GameObject rangedWeaponInstance = Instantiate(rangedWeapon, new Vector3(0,0,0), Quaternion.identity) as GameObject;
+        rangedWeaponInstance.transform.parent = player.transform;
+    }
+
+    public void setMeleeWeapon()
+    {
+        GameObject meleeWeaponInstance = Instantiate(meleeWeapon, new Vector3(0,0,0), Quaternion.identity) as GameObject;
+        meleeWeaponInstance.transform.parent = player.transform;
+    }
+
+
+    public void initiateLevelUp()
+    {
         int levelUp = player.GetComponent<LevelSystem>().getGainedLevels();
         if (levelUp > 0)
         {
@@ -61,6 +88,24 @@ public class GameController : MonoBehaviour
             upgradesHandler.OpenUpgrades();
             player.GetComponent<LevelSystem>().resetGainedLevels();
             Debug.Log("Upgrade");
+        }
+    }
+
+    public void roomCleared()
+    {
+        traversedRooms = traversedRooms + 1;
+        if (SoundEffectManager.Instance)
+        {
+            SoundEffectManager.Instance.DoorOpen();
+        }
+    }
+
+
+    public void roomEntered()
+    {
+        if (SoundEffectManager.Instance)
+        {
+            SoundEffectManager.Instance.DoorClose();
         }
     }
 

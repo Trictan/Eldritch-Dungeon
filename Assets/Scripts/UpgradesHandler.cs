@@ -19,6 +19,8 @@ public class UpgradesHandler : MonoBehaviour
 
     public GameObject selectButton;
 
+    public GameController gameController;
+
     GameObject selectedButton;
 
     private PlayerStats playerStats;
@@ -104,6 +106,8 @@ public class UpgradesHandler : MonoBehaviour
             case "attackDelay": playerStats.attackDelay = (float) value; break;
             case "moveSpeed": playerStats.movementSpeed = (float) value; break;
             case "moreProjectiles": playerStats.movementSpeed = (float) value; break;
+            case "meleeWeapon": gameController.setMeleeWeapon(); break;
+            case "rangedWeapon": gameController.setRangedWeapon(); break;
         }
     }
 
@@ -123,6 +127,15 @@ public class UpgradesHandler : MonoBehaviour
 
     private void createUpgradePool()
     {
+        if (playerStats.lvl==1)
+        {
+            leftButton.name = "meleeWeapon";
+            rightButton.name = "rangedWeapon";
+            leftButton.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "melee";
+            rightButton.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "ranged";
+            return;
+        }
+
         List<string> upgradePool = new List<string>();
 
         foreach (var stat in upgrades)
@@ -245,6 +258,7 @@ public class UpgradesHandler : MonoBehaviour
     }
 
     private float calcNewValue(string statName) {
+        if (statName.Contains("Weapon")) {return 0f;}
         print("calcNewValue()");
         Dictionary<string, float> statDictionary = upgrades[statName];
         float statVal = getStat(statName);
