@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Flower1Shooting : monobehaviour
+public class Flower1Shooting : MonoBehaviour
 {
     public GameObject seedBullet;
     public Transform seedBulletPos;
@@ -11,7 +11,7 @@ public class Flower1Shooting : monobehaviour
     private GameObject projectileFolder;
 
     private float timerAlive = 11;
-    // Start is called once before the first execution of Update after the monobehaviour is created
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("player");

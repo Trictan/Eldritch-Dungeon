@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class ToggleSlider : monobehaviour
+public class ToggleSlider : MonoBehaviour
 {
     [Header("Slider & Visuals")]
     public Slider slider;            // Slidern i scenen

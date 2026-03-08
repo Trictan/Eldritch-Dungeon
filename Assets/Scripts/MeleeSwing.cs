@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class MeleeSwing : monobehaviour
+public class MeleeSwing : MonoBehaviour
 {
     private float damage;
     
 
-    // Start is called once before the first execution of Update after the monobehaviour is created
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         GameObject player=GameObject.FindWithTag("player");

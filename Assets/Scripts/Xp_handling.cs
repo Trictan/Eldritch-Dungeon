@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Xp_handling : monobehaviour
+public class Xp_handling : MonoBehaviour
 {
     private int Xp = 0;
 

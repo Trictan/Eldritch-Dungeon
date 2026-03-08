@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SoundEffectManager : monobehaviour
+public class SoundEffectManager : MonoBehaviour
 {
     public static SoundEffectManager Instance;
     public static bool soundOn = true;

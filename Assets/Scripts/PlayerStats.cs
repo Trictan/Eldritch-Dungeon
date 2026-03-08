@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class PlayerStats : monobehaviour
+public class PlayerStats : MonoBehaviour
 {
     public float HP;
     public float movementSpeed;
