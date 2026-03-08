@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 1519714431090854024}
   - component: {fileID: 5215776571206199157}
   m_Layer: 0
-  m_Name: strongestEnemy 1
+  m_Name: Pumking
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
