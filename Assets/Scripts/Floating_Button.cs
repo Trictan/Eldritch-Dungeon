@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Floating_Button : monobehaviour
+public class Floating_Button : MonoBehaviour
 {
     public float amplitude;
     public float frequency;
@@ -9,7 +9,7 @@ public class Floating_Button : monobehaviour
 
     private float _t;
 
-    // Start is called once before the first execution of Update after the monobehaviour is created
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rotation = gameObject.transform.localEulerAngles;

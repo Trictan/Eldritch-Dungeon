@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Quit : monobehaviour
+public class Quit : MonoBehaviour
 {
     public void quit_app()
     {

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class LevelSystem : monobehaviour
+public class LevelSystem : MonoBehaviour
 {
     private PlayerStats playerStats; //Keep track of what level
     private float goalXp = 0;

@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Boss0 : monobehaviour
+public class Boss0 : MonoBehaviour
 {
     private int state;
     private float timer;
     
-    // Start is called once before the first execution of Update after the monobehaviour is created
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
        

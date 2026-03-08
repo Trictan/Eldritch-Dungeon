@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class SettingHandling : monobehaviour
+public class SettingHandling : MonoBehaviour
 {
     public static bool settings = false;
     public Canvas canvas;
 
-    // Start is called once before the first execution of Update after the monobehaviour is created
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         setVisible(settings);
