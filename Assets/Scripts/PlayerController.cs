@@ -15,6 +15,7 @@ public class PlayerCtrl: MonoBehaviour
     private float timer;
 
     private PlayerEffects playerEffects;
+    [SerializeField] private Color overlay = Color.red;
 //
 
     void Start ()
@@ -73,7 +74,7 @@ public class PlayerCtrl: MonoBehaviour
     public void SetiFrame(bool val)
     {
         iFrame=val;
-        if(iFrame) playerEffects.SetOverlay(Color.red, 0.3f);
+        if(iFrame) playerEffects.SetOverlay(overlay, 0.3f);
     }
     public bool GetiFrame()
     {
