@@ -74,7 +74,7 @@ public class PlayerCtrl: MonoBehaviour
             InDash=true;
             _t=0;
             PlayerStats playerstats = GetComponent<PlayerStats>();
-            playerstats.movementSpeed=+7;
+            playerstats.movementSpeed+=11;
             DashReady=false;
             DashCD=0;
         }
@@ -82,7 +82,7 @@ public class PlayerCtrl: MonoBehaviour
         if(_t>0.3 && InDash)
         {
             PlayerStats playerstats = GetComponent<PlayerStats>();
-            playerstats.movementSpeed=-7;
+            playerstats.movementSpeed-=11;
             InDash=false;
         }//0.5 is the dash Duration
         _t+=Time.deltaTime;
