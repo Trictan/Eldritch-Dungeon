@@ -171,14 +171,26 @@ public class GameController : MonoBehaviour
 
     public GameObject pickEnemy()
     {
-        // floor as parameter too 
-        if (traversedRooms<3)
-        {
-            return enemiesOne[0];
+        if (floor==1) {
+            if (traversedRooms<3)
+            {
+                return enemiesOne[0];
+            } else
+            {
+                int r = Random.Range(0, enemiesOne.Count);
+                return enemiesOne[r];
+            }
         } else
         {
-            int r = Random.Range(0, enemiesOne.Count);
-            return enemiesOne[r];
+            if (UnityEngine.Random.value > 0.25)
+            {
+                int r = Random.Range(0, enemiesOne.Count);
+                return enemiesOne[r];
+            } else
+            {
+                int r = Random.Range(0, enemiesTwo.Count);
+                return enemiesTwo[r];
+            }
         }
     }
 
