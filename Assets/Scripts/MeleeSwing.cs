@@ -35,5 +35,9 @@ public class MeleeSwing : MonoBehaviour
         {
             kindSoul.GetComponent<LifeSystem>().TakeDamage(damage);
         }
+        if (kindSoul.CompareTag("enemyBullet"))
+        {
+            Destroy(kindSoul.gameObject);
+        }
     }
 }
