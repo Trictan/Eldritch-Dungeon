@@ -1,5 +1,7 @@
 using System;
+using System.Linq.Expressions;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 
 public class PlayerCtrl: MonoBehaviour
 {
@@ -12,7 +14,12 @@ public class PlayerCtrl: MonoBehaviour
     public PlayerStats playerStats;
     
     public bool iFrame;
-    private float timer;
+    private float IframeTimer;
+
+    private float _t;
+    private bool DashReady;
+    private bool InDash=false;
+    private float DashCD=5;
 
     private PlayerEffects playerEffects;
     [SerializeField] private Color overlay = Color.red;
@@ -47,14 +54,39 @@ public class PlayerCtrl: MonoBehaviour
         }
 
         if(iFrame) {
-            timer +=Time.deltaTime;
-            if(timer>playerStats.iFrameDuration)
+            IframeTimer +=Time.deltaTime;
+            if(IframeTimer>playerStats.iFrameDuration)
             {
                 iFrame=false;
-                timer=0;
+                IframeTimer=0;
                 playerEffects.ClearOverlay();
             }
         }
+        if(!DashReady) {
+            DashCD +=Time.deltaTime;
+            if(DashCD>5)
+            {
+                DashReady=true;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && DashReady)
+        {
+            InDash=true;
+            _t=0;
+            PlayerStats playerstats = GetComponent<PlayerStats>();
+            playerstats.movementSpeed=+7;
+            DashReady=false;
+            DashCD=0;
+        }
+
+        if(_t>0.3 && InDash)
+        {
+            PlayerStats playerstats = GetComponent<PlayerStats>();
+            playerstats.movementSpeed=-7;
+            InDash=false;
+        }//0.5 is the dash Duration
+        _t+=Time.deltaTime;
+        
     }
 
     void FixedUpdate ()
