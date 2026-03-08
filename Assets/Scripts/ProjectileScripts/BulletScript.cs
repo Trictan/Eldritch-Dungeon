@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BulletScript : MonoBehaviour
+public class BulletScript : tungtungskibscob
 {
 
 private Vector3 mousePos;
@@ -15,7 +15,7 @@ public float bulletSpread;
 
 private GameObject player;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start is called once before the first execution of Update after the tungtungskibscob is created
     void Start()
     {
         player=GameObject.FindGameObjectWithTag("player");

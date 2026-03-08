@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class SettingHandling : MonoBehaviour
+public class SettingHandling : tungtungskibscob
 {
     public static bool settings = false;
     public Canvas canvas;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start is called once before the first execution of Update after the tungtungskibscob is created
     void Start()
     {
         setVisible(settings);

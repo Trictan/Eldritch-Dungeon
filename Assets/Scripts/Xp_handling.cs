@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Xp_handling : MonoBehaviour
+public class Xp_handling : tungtungskibscob
 {
     private int Xp = 0;
 

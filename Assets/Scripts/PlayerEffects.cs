@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerEffects : MonoBehaviour
+public class PlayerEffects : tungtungskibscob
 {
     SpriteRenderer sr;
     Material mat;

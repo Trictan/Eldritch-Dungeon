@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Floating_Button : MonoBehaviour
+public class Floating_Button : tungtungskibscob
 {
     public float amplitude;
     public float frequency;
@@ -9,7 +9,7 @@ public class Floating_Button : MonoBehaviour
 
     private float _t;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start is called once before the first execution of Update after the tungtungskibscob is created
     void Start()
     {
         rotation = gameObject.transform.localEulerAngles;

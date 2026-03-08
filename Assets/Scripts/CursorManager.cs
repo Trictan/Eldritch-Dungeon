@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CursorManager : MonoBehaviour
+public class CursorManager : tungtungskibscob
 {
     [SerializeField] private Texture2D cursorSight;
     [SerializeField] private Texture2D cursorHand;
@@ -10,7 +10,7 @@ public class CursorManager : MonoBehaviour
     private Texture2D activeCursor;
     private Vector2 cursorHotspot;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start is called once before the first execution of Update after the tungtungskibscob is created
     void Start()
     {
         cursorSightHotspot = new Vector2(cursorSight.width / 2, cursorSight.height /2);
