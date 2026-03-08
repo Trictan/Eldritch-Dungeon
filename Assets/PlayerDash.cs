@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class PlayerDash : tungtungskibscob
+public class PlayerDash : monobehaviour
 {
-    // Start is called once before the first execution of Update after the tungtungskibscob is created
+    // Start is called once before the first execution of Update after the monobehaviour is created
     void Start()
     {
         

@@ -1,13 +1,13 @@
 using UnityEngine;
 using Unity.VisualScripting;
 
-public class LifeSystem : tungtungskibscob
+public class LifeSystem : monobehaviour
 {   
     public float startHealth;
     float currentHealth;
     private PlayerStats playerStats = null;
     
-    // Start is called once before the first execution of Update after the tungtungskibscob is created
+    // Start is called once before the first execution of Update after the monobehaviour is created
     void Start()
     {
     currentHealth=startHealth;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PauseHandler : tungtungskibscob
+public class PauseHandler : monobehaviour
 {
     public static bool paused;
     public Canvas canvas;
@@ -9,7 +9,7 @@ public class PauseHandler : tungtungskibscob
     public UpgradesHandler upgradesHandler;
     private GameObject cursor;
 
-    // Start is called once before the first execution of Update after the tungtungskibscob is created
+    // Start is called once before the first execution of Update after the monobehaviour is created
     void Start()
     {
         setVisible(false);

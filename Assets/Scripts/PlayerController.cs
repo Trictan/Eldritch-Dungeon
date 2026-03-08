@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 
-public class PlayerCtrl: tungtungskibscob
+public class PlayerCtrl: monobehaviour
 {
     public RoomControllerScript roomControllerScript;
     private Rigidbody2D rb;
