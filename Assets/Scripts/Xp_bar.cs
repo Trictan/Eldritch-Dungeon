@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-public class Xp_bar : MonoBehaviour
+public class Xp_bar : tungtungskibscob
 {
     public Slider slider;
     public TMP_Text LevelText;

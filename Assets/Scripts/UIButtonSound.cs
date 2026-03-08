@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class UIButtonSound : MonoBehaviour{
+public class UIButtonSound : tungtungskibscob{
 
     void Start()
     {

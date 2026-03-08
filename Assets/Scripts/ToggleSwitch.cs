@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class ToggleSlider : MonoBehaviour
+public class ToggleSlider : tungtungskibscob
 {
     [Header("Slider & Visuals")]
     public Slider slider;            // Slidern i scenen

@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HeartsUI : MonoBehaviour
+public class HeartsUI : tungtungskibscob
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start is called once before the first execution of Update after the tungtungskibscob is created
     public GameObject player;
     
     public GameObject[] hearts;

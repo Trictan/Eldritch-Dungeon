@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-public class LevelSystem : MonoBehaviour
+public class LevelSystem : tungtungskibscob
 {
     private PlayerStats playerStats; //Keep track of what level
     private float goalXp = 0;
@@ -18,10 +19,9 @@ public class LevelSystem : MonoBehaviour
     void newLevel()
     {   
         if(playerStats.lvl == 0) goalXp = 20;
-        else goalXp *= 4; //If want make a algoritm.
+        else goalXp = 20*(float)Math.Pow(2, playerStats.lvl); //If want make a algoritm.
         playerStats.lvl += 1;
     }
-
     public int getLevel()
     {
         return playerStats.lvl;
