@@ -10,11 +10,9 @@ public class GameController : MonoBehaviour
     public GameObject testEnemy;
     public GameObject player;
     public GameObject enemiesParentNode;
-
-    public List<List<GameObject>> enemies;
     public List<GameObject> enemiesOne;
     public List<GameObject> enemiesTwo;
-    public List<List<GameObject>> bosses;
+    public List<GameObject> bosses;
     List<Vector3> spawnPoints = new List<Vector3>();
     public static int floor;
     public static int traversedRooms;
@@ -29,8 +27,12 @@ public class GameController : MonoBehaviour
     public GameObject playerProjectile;
     public GameObject projectileFolder;
 
+    private PlayerStats playerStats;
+
     void Start()
     {
+        playerStats = player.GetComponent<PlayerStats>();
+
         for (int i = 0; i<18; i++)
         {
             for (int k = 0; k<8 ;k++)
@@ -41,9 +43,8 @@ public class GameController : MonoBehaviour
                 spawnPoints.Add(currentSpawnPoint);
             }
         }
-
-        floor=1;
-        traversedRooms=0;
+        floor = 1;
+        traversedRooms = 0;
     }
 
     void Update()
@@ -72,12 +73,14 @@ public class GameController : MonoBehaviour
     {
         GameObject rangedWeaponInstance = Instantiate(rangedWeapon, new Vector3(0,0,0), Quaternion.identity) as GameObject;
         rangedWeaponInstance.transform.parent = player.transform;
+        playerStats.hasRanged=1;
     }
 
     public void setMeleeWeapon()
     {
         GameObject meleeWeaponInstance = Instantiate(meleeWeapon, new Vector3(0,0,0), Quaternion.identity) as GameObject;
         meleeWeaponInstance.transform.parent = player.transform;
+        playerStats.hasMelee=1;
     }
 
 
@@ -166,17 +169,44 @@ public class GameController : MonoBehaviour
         
     }
 
+    public GameObject pickEnemy()
+    {
+        // floor as parameter too 
+        if (traversedRooms<3)
+        {
+            return enemiesOne[0];
+        } else
+        {
+            int r = Random.Range(0, enemiesOne.Count);
+            return enemiesOne[r];
+        }
+    }
+
+    public GameObject pickBoss()
+    {
+        // could have parameters, etc
+        int r = Random.Range(0, bosses.Count);
+        return bosses[r];
+    }
+
+    public void SpawnBoss(Vector3 pos) // add parameters to decide what enemies, how many, etc
+    {
+        GameObject bossPrefab = pickBoss();
+        SpawnEnemy(bossPrefab, pos);
+    }
 
     public void SpawnEnemies() // add parameters to decide what enemies, how many, etc
     {
         int count = 0;
-        while (count<NrOfEnemies())
+        int nrOfEnemies = NrOfEnemies();
+        while (count<nrOfEnemies)
         {
+            GameObject enemyPrefab = pickEnemy();
             int r = Random.Range(0, spawnPoints.Count);
             Vector3 spawnPoint = spawnPoints[r];
             if (ValidSpawn(spawnPoint))
             {
-              SpawnEnemy(testEnemy, spawnPoint);
+              SpawnEnemy(enemyPrefab, spawnPoint);
               count+=1;
             };
         }
