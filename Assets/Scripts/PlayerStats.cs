@@ -17,7 +17,7 @@ public class PlayerStats : MonoBehaviour
     public float projectileSpeed;
 
     public int projectileHits;
-    public int numberOfProjectiles=2;
+    public int numberOfProjectiles;
     // will always be at least 1 hit as it checks at trigger
  
     public float GetiFrames()

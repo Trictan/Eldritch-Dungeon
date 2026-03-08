@@ -11,9 +11,9 @@ private float speed;
 private float damage;
 
 private int hp;
+public float bulletSpread;
 
 private GameObject player;
-private Vector2 direction;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,9 +42,13 @@ private Vector2 direction;
         mousePos=mainCam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 direction = mousePos-player.transform.position;
         Vector3 rotation = player.transform.position-mousePos;
-        rb.linearVelocity = new Vector2(direction.x, direction.y).normalized*speed;
+
+
+        //rb.linearVelocity = new Vector2(direction.x, direction.y).normalized*speed;
+        
         float rot= Mathf.Atan2(rotation.y, rotation.x)*Mathf.Rad2Deg;
-        transform.rotation=Quaternion.Euler(0,0,rot+180);
+        transform.rotation=Quaternion.Euler(0,0,rot+180+bulletSpread);
+        rb.linearVelocity = transform.right*speed;
 
     }
 
@@ -68,14 +72,5 @@ private Vector2 direction;
             }
         }
     }
-    public void SetDirection(Vector2 dir)
-    {
-        direction = dir.normalized;
-
-        rb.linearVelocity = direction * speed;
-
-        float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rot + 90);
-    }
-
+    
 }

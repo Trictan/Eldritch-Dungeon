@@ -56,31 +56,37 @@ public class RangedWeapon : MonoBehaviour
             //anim here
             if (playerStats.numberOfProjectiles == 1)
             {
-                
+                SpawnProjectile(0);
             }
             else if (playerStats.numberOfProjectiles == 2)
             {
-                Quaternion spawnRotation = BulletTransform.rotation * Quaternion.Euler(0, 45, 0);
-                SpawnProjectile(RotateVector(mousePos, 90));
-                //Instantiate(bullet, BulletTransform.position, Quaternion.identity, projectileFolder);
+                SpawnProjectile(-5);
+                SpawnProjectile(5);
+            }
+            else if (playerStats.numberOfProjectiles == 3)
+            {
+                SpawnProjectile(-7);
+                SpawnProjectile(0);
+                SpawnProjectile(7);
+            }
+            else
+            {
+                SpawnProjectile(-90);
+                SpawnProjectile(0);
+                SpawnProjectile(90);
+                SpawnProjectile(180);
+            }
             }
             
         }
 
-    void SpawnProjectile(Vector2 dir)
+    void SpawnProjectile(float spread)
     {
         GameObject bullet = Instantiate(projectile, BulletTransform.position, Quaternion.identity, projectileFolder);
-        bullet.GetComponent<BulletScript>().SetDirection(dir);
+        BulletScript tempbullet = bullet.GetComponent<BulletScript>();
+        if (tempbullet != null)
+            {
+                tempbullet.bulletSpread=spread;
+            }
     }
-    }
-
-Vector2 RotateVector(Vector2 basedir, float degrees)
-    {
-        float rad = degrees * Mathf.Deg2Rad;
-        float cos = Mathf.Cos(rad);
-        float sin = Mathf.Sin(rad);
-
-        return new Vector2(basedir.x * cos - basedir.y * sin, basedir.x * sin + basedir.y * cos);
-    }
-
 }
