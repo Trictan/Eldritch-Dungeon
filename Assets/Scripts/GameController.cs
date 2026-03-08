@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 
 public class GameController : MonoBehaviour
 {
+    public TextMeshProUGUI textElement;
     public RoomControllerScript roomController;
     public GameObject testEnemy;
     public GameObject player;
@@ -12,8 +14,8 @@ public class GameController : MonoBehaviour
     public List<GameObject> enemiesTwo;
     public List<GameObject> bosses;
     List<Vector3> spawnPoints = new List<Vector3>();
-    public int floor=1;
-    public int traversedRooms=0;
+    public static int floor;
+    public static int traversedRooms;
     bool previousRoomStatus=true;
 
     public UpgradesHandler upgradesHandler;
@@ -49,7 +51,7 @@ public class GameController : MonoBehaviour
     {
         if (changeInRoomStatus())
         {
-
+            textElement.text=$"Floor {floor}\nRooms Cleared: {traversedRooms}";
             roomController.setSprites();
             previousRoomStatus = isClear();
 
