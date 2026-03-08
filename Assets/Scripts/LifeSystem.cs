@@ -54,6 +54,9 @@ public class LifeSystem : MonoBehaviour
             return;
         }
 
+        // crashes otherwise
+        if (SoundEffectManager.Instance==null) {return;}
+
         if (gameObject.CompareTag("enemy"))
         {
             SoundEffectManager.Instance.EnemyTakeDamage(transform.position);
@@ -73,8 +76,10 @@ public class LifeSystem : MonoBehaviour
             int toAddXp = gameObject.GetComponent<Enemy_Xp>().getXp();
             xpHandeler.addXp(toAddXp);
             //Debug.Log("Xp: " + xpHandeler.getPlayerXp());
-            SoundEffectManager.Instance.EnemyDie(transform.position);
             Destroy(gameObject);
+
+            if (SoundEffectManager.Instance==null) {return;}
+            SoundEffectManager.Instance.EnemyDie(transform.position);
         }
     }
 

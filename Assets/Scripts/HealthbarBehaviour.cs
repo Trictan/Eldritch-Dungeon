@@ -24,13 +24,16 @@ public class HealthbarBehaviour : MonoBehaviour
         RectTransform frameRT = frame.GetComponent<RectTransform>();
 
         SpriteRenderer enemySprite = GetComponentInParent<SpriteRenderer>();
+        Vector3 localScale = enemySprite.transform.localScale;
+
+        Vector3 spriteBounds = enemySprite.sprite.bounds.size;
 
         // Sätt bredd baserat på enemy
-        rt.sizeDelta = new Vector2((enemySprite.bounds.size.x * 100f) - 8, rt.sizeDelta.y);
-        frameRT.sizeDelta = new Vector2(enemySprite.bounds.size.x * 100f, frameRT.sizeDelta.y);
+        rt.sizeDelta = new Vector2((spriteBounds.x * 100f) - 8, rt.sizeDelta.y/localScale.y);
+        frameRT.sizeDelta = new Vector2((spriteBounds.x * 100f) , frameRT.sizeDelta.y/localScale.y);
 
         // Sätt position under enemy
-        transform.localPosition = new Vector3(0, -enemySprite.bounds.size.y / 2 - 0.2f, 0);
+        transform.localPosition = new Vector3((localScale.x-1)*(spriteBounds.x/2),-(spriteBounds.y/localScale.y)*0.8f, 0);
     }
 
     // Update is called once per frame
