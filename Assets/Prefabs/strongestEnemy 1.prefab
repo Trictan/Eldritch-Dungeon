@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab67830513f714a4ba3b6328ea31bdf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 10
+  startHealth: 25
 --- !u!114 &6112341931080470133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,7 +267,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c63d852f5bb1b94c84ee88b6ab14aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   speed: 0.3
 --- !u!95 &5215776571206199157
 Animator:

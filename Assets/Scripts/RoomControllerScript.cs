@@ -109,7 +109,7 @@ public class RoomControllerScript : MonoBehaviour
         // special case new floor
         if (door==hatch) {nextFloor(); return;}
 
-        if (gameController.traversedRooms>1 && UnityEngine.Random.value>0.5)
+        if (GameController.traversedRooms>1 && UnityEngine.Random.value>0.5)
         {
             bossRoom(door, player);
         } else
@@ -145,11 +145,11 @@ public class RoomControllerScript : MonoBehaviour
     public void nextFloor()
     {
         // change tileset (?)
-        gameController.floor+=1;
-        gameController.traversedRooms=0;
+        GameController.floor+=1;
+        GameController.traversedRooms=0;
         doorLast=hatch;
         setNormalRoom();
-        Variables.Object(hatch).Set("state",2);
+        Variables.Object(hatch).Set("state",0);
         setSprites();
         //animation ?
     }

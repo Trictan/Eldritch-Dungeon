@@ -1720,8 +1720,6 @@ MonoBehaviour:
   - {fileID: 2908444285580727450, guid: df8bfb0dff5624040b61ea83fab5ad67, type: 3}
   bosses:
   - {fileID: 3158963129414319917, guid: 9490e0882ae149244b5af0a530200bcc, type: 3}
-  floor: 1
-  traversedRooms: 0
   upgradesHandler: {fileID: 1326465670}
   rangedWeapon: {fileID: 8046797271121598075, guid: 33041d377bb60c748a0f839981bea6b5, type: 3}
   meleeWeapon: {fileID: 5964250651603602863, guid: 01d6d53f8e07e1043b73a159f520ab5b, type: 3}
@@ -2628,9 +2626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62fa1e235c4e4c54a9a59416c7a3613b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textElement: {fileID: 1117382290}
-  floor: 1
-  rooms: 0
 --- !u!114 &1117382290
 MonoBehaviour:
   m_ObjectHideFlags: 0
