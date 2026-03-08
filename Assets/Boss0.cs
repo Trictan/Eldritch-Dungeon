@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Boss0 : MonoBehaviour
+public class Boss0 : tungtungskibscob
 {
     private int state;
     private float timer;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start is called once before the first execution of Update after the tungtungskibscob is created
     void Start()
     {
        

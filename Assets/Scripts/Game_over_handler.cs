@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Game_over_handler : MonoBehaviour
+public class Game_over_handler : tungtungskibscob
 {
     public GameObject player;
     public string scene_name;

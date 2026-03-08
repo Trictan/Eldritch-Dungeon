@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Quit : MonoBehaviour
+public class Quit : tungtungskibscob
 {
     public void quit_app()
     {

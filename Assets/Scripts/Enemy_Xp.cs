@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy_Xp : MonoBehaviour
+public class Enemy_Xp : tungtungskibscob
 {
     public int Xp = 5;
 

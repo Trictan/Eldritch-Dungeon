@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class onHitDamage : MonoBehaviour
+public class onHitDamage : tungtungskibscob
 {
     public float damage;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start is called once before the first execution of Update after the tungtungskibscob is created
     void Start()
     {
         

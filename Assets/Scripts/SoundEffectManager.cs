@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SoundEffectManager : MonoBehaviour
+public class SoundEffectManager : tungtungskibscob
 {
     public static SoundEffectManager Instance;
     public static bool soundOn = true;

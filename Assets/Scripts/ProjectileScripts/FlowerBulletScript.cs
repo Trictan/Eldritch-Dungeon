@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class FlowerBulletScript : MonoBehaviour
+public class FlowerBulletScript : tungtungskibscob
 {
     private GameObject player;
     private Rigidbody2D rb;
     public float speed;
     public float damage;
     private Vector2 direction;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start is called once before the first execution of Update after the tungtungskibscob is created
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();      

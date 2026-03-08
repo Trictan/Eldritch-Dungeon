@@ -1,7 +1,7 @@
 using System.Threading;
 using UnityEngine;
 
-public class MeleeScript : MonoBehaviour
+public class MeleeScript : tungtungskibscob
 {
     private Camera mainCam;
     private Vector3 mousePos;
@@ -17,7 +17,7 @@ public class MeleeScript : MonoBehaviour
     float timer=0;
 
     float atkTimer=0;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start is called once before the first execution of Update after the tungtungskibscob is created
     void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();

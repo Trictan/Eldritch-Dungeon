@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine.UIElements;
 using System;
 
-public class RoomControllerScript : MonoBehaviour
+public class RoomControllerScript : tungtungskibscob
 {
     private enum doorState {
         Wall = 0,
@@ -40,7 +40,7 @@ public class RoomControllerScript : MonoBehaviour
     GameObject doorLast;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start is called once before the first execution of Update after the tungtungskibscob is created
 
     void Start()
     {
