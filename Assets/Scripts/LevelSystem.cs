@@ -2,9 +2,14 @@ using UnityEngine;
 
 public class LevelSystem : MonoBehaviour
 {
-    private int level = 0; //Keep track of what level
+    private PlayerStats playerStats; //Keep track of what level
     private float goalXp = 0;
     private int gainedLevels = 0;
+
+    void Start()
+    {
+        playerStats = GetComponent<PlayerStats>();
+    }
 
     void Update()
     {
@@ -12,14 +17,14 @@ public class LevelSystem : MonoBehaviour
     }
     void newLevel()
     {   
-        if(level == 0) goalXp = 20;
+        if(playerStats.lvl == 0) goalXp = 20;
         else goalXp *= 4; //If want make a algoritm.
-        level ++;
+        playerStats.lvl += 1;
     }
 
     public int getLevel()
     {
-        return level;
+        return playerStats.lvl;
     }
 
     public float getGoalXp()

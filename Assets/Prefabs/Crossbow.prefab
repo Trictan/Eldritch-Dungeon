@@ -155,9 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b76ba809b793c9a4e82e8d22219571c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 2841066530690308833, guid: cb6027ace68cc564a9529aca8872ff8b, type: 3}
+  projectile: {fileID: 2841066530690308833, guid: cb6027ace68cc564a9529aca8872ff8b, type: 3}
   BulletTransform: {fileID: 8082128263813188997}
-  canFire: 1
-  attackDelay: 1
-  dmg: 1
-  projectileSpeed: 10
+  projectileFolder: {fileID: 0}

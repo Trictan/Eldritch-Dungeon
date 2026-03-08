@@ -10,7 +10,7 @@ public class RangedWeapon : MonoBehaviour
     public Transform BulletTransform;
     private float timer;
 
-    public Transform projectileFolder;
+    private Transform projectileFolder;
     private Animator animator;
 
     private PlayerStats playerStats;
@@ -20,6 +20,7 @@ public class RangedWeapon : MonoBehaviour
     {
         playerStats = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerStats>();
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        projectileFolder = GameObject.FindGameObjectWithTag("projectileParent").transform;
         animator = BulletTransform.gameObject.GetComponent<Animator>();
     }
 

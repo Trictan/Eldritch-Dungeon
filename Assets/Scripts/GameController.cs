@@ -20,6 +20,13 @@ public class GameController : MonoBehaviour
 
     public UpgradesHandler upgradesHandler;
 
+
+    public GameObject rangedWeapon;
+    public GameObject meleeWeapon;
+    // maybe tmp
+    public GameObject playerProjectile;
+    public GameObject projectileFolder;
+
     void Start()
     {
         for (int i = 0; i<18; i++)
@@ -56,6 +63,21 @@ public class GameController : MonoBehaviour
         
         if (isClear()) {initiateLevelUp();}
     }
+
+    // will always be at least 1 hit as it checks at trigger
+    
+    public void setRangedWeapon()
+    {
+        GameObject rangedWeaponInstance = Instantiate(rangedWeapon, new Vector3(0,0,0), Quaternion.identity) as GameObject;
+        rangedWeaponInstance.transform.parent = player.transform;
+    }
+
+    public void setMeleeWeapon()
+    {
+        GameObject meleeWeaponInstance = Instantiate(meleeWeapon, new Vector3(0,0,0), Quaternion.identity) as GameObject;
+        meleeWeaponInstance.transform.parent = player.transform;
+    }
+
 
     public void initiateLevelUp()
     {
