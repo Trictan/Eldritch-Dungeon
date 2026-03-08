@@ -86,7 +86,6 @@ public class PlayerCtrl: MonoBehaviour
             InDash=false;
         }//0.5 is the dash Duration
         _t+=Time.deltaTime;
-        
     }
 
     void FixedUpdate ()

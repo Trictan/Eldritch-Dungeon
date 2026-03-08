@@ -3,12 +3,14 @@ using UnityEngine;
 public class Flower1Shooting : MonoBehaviour
 {
     public GameObject seedBullet;
+    public GameObject specialBullet;
     public Transform seedBulletPos;
     public int bulletsShoot = 1;
     public float fireDelay;
     private float timer = 0.73f;
     private GameObject player;
     private GameObject projectileFolder;
+    public bool specialAttack=false;
 
     private float timerAlive = 11;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -90,9 +92,19 @@ public class Flower1Shooting : MonoBehaviour
     }
 
     void SpawnBullet(Vector2 dir)
-    {
-        GameObject bullet = Instantiate(seedBullet, seedBulletPos.position, Quaternion.identity, projectileFolder.transform);
-        bullet.GetComponent<FlowerBulletScript>().SetDirection(dir);
+    {   
+        if (specialAttack && specialBullet != null)
+        {
+            GameObject Specialbullet = Instantiate(specialBullet, seedBulletPos.position, Quaternion.identity, projectileFolder.transform);
+            Specialbullet.GetComponent<FlowerBulletScript>().SetDirection(dir);
+            
+        }
+        else
+        {
+            GameObject bullet = Instantiate(seedBullet, seedBulletPos.position, Quaternion.identity, projectileFolder.transform);
+            bullet.GetComponent<FlowerBulletScript>().SetDirection(dir);
+        }
+        
     }
 
     Vector2 RotateVector(Vector2 basedir, float degrees)
