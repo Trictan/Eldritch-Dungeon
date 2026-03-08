@@ -5204,7 +5204,7 @@ MonoBehaviour:
   dmg: 1
   projectileSpeed: 10
   projectileHits: 1
-  numberOfProjectiles: 2
+  numberOfProjectiles: 1
 --- !u!114 &1281599597
 MonoBehaviour:
   m_ObjectHideFlags: 0
