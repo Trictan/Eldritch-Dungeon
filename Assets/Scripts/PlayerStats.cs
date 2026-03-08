@@ -15,6 +15,8 @@ public class PlayerStats : MonoBehaviour
     public float attackDelay;
     public float dmg;
     public float projectileSpeed;
+    public float hasRanged=0;
+    public float hasMelee=0;
 
     public int projectileHits;
     public int numberOfProjectiles;
