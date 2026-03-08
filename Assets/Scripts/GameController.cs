@@ -12,8 +12,8 @@ public class GameController : MonoBehaviour
     public List<GameObject> enemiesTwo;
     public List<List<GameObject>> bosses;
     List<Vector3> spawnPoints = new List<Vector3>();
-    int floor;
-    int traversedRooms=0;
+    public int floor=1;
+    public int traversedRooms=0;
     bool previousRoomStatus=true;
 
     public UpgradesHandler upgradesHandler;
@@ -41,9 +41,6 @@ public class GameController : MonoBehaviour
                 spawnPoints.Add(currentSpawnPoint);
             }
         }
-
-        floor=1;
-        traversedRooms=0;
     }
 
     void Update()

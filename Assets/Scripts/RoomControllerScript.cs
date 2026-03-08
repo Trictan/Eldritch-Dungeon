@@ -35,6 +35,14 @@ public class RoomControllerScript : MonoBehaviour
     public Sprite doorClosedSprite;
     public Sprite wallSprite;
 
+    public Sprite hatchOpenSprite;
+    public Sprite hatchClosedSprite;
+    public Sprite floorSprite;
+
+
+    public GameObject hatch;
+
+
     //GameObject[] doors;
 
     GameObject doorLast;
@@ -94,6 +102,8 @@ public class RoomControllerScript : MonoBehaviour
         int doorStateInt = (int) Variables.Object(door).Get("state");
         if (doorStateInt != 1) {return;}
 
+        if (door==hatch) {nextFloor(); return;}
+
         doorLast = oppositeDoor[door];
 
         nextRoom();
@@ -107,6 +117,29 @@ public class RoomControllerScript : MonoBehaviour
         startLerp();
     }
 
+    public void nextFloor()
+    {
+        gameController.floor+=1;
+        doorLast=hatch;
+        nextRoom();
+        setSprites();
+        //animation
+    }
+
+
+    public void setBossRoom()
+    {
+        for (int i = 0; i < doors.Count(); i++) 
+        {
+            GameObject currentDoor = doors[i];
+            Variables.Object(currentDoor).Set("state",2);
+            if (doorLast != doors[i])
+            {   
+                Variables.Object(currentDoor).Set("state",0);
+            }
+        }
+
+    }
 
     doorState intToDoorState(int n)
     {
@@ -137,10 +170,15 @@ public class RoomControllerScript : MonoBehaviour
         }
     }
 
-    void nextRoom()
+    void clearProjectiles()
     {
         GameObject pParent = GameObject.FindGameObjectWithTag("projectileParent");
         DeleteAllChildren(pParent.transform);
+    }
+
+    void nextRoom()
+    {
+        clearProjectiles();
 
         Variables.Object(doorLast).Set("state",2);
 
@@ -170,7 +208,32 @@ public class RoomControllerScript : MonoBehaviour
     {
         for (int i = 0; i < doors.Count(); i++) {
             setSprite(doors[i]);
-        }   
+        }
+        setHatchSprite(hatch);
+    }
+
+    void setHatchSprite(GameObject hatch)
+    {
+        Sprite hatchSprite;
+
+        int hatchState = (int) Variables.Object(hatch).Get("state");
+
+        switch(hatchState)
+        {
+            case 0:
+            hatchSprite=floorSprite;
+            break;
+            case 1: 
+                if (gameController.isClear()) {
+                    hatchSprite=hatchOpenSprite;
+                } else {
+                    hatchSprite = hatchClosedSprite;
+                };
+                break;
+            case 2:
+                hatchSprite = hatchClosedSprite;
+                break;
+        }
     }
     void setSprite(GameObject door)
     {
