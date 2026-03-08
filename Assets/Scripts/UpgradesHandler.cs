@@ -30,7 +30,7 @@ public class UpgradesHandler : MonoBehaviour
         {"projectileHits", "Projectiles hit additional enemies."},
         {"attackDelay", "Shorten delay between attacks."},
         {"dmg", "Increase damage dealt to enemies."},
-        {"movespeed", "Increase player movement speed."}
+        {"moveSpeed", "Increase player movement speed."}
     };
 
     Dictionary<string, Dictionary<string, float>> upgrades =
