@@ -6,6 +6,7 @@ using TMPro;
 public class UpgradesHandler : MonoBehaviour
 {
 
+
     public Color COLOR_LOCKED;
     public Color COLOR_DESELECTED;
     public Color COLOR_SELECTED;
@@ -20,6 +21,15 @@ public class UpgradesHandler : MonoBehaviour
     public GameObject selectButton;
 
     public GameController gameController;
+
+    public Sprite CARD_SWORD;
+    public Sprite CARD_CROSSBOW;
+    public Sprite CARD_DAMAGE;
+    public Sprite CARD_HEALING;
+    public Sprite CARD_HASTE;
+    public Sprite CARD_DEXTERITY;
+    public Sprite CARD_MULTISHOT;
+    public Sprite CARD_PIERCE;
 
     GameObject selectedButton;
 
@@ -36,6 +46,8 @@ public class UpgradesHandler : MonoBehaviour
         {"numberOfProjectiles", "+1 projectiles fired"},
         {"hp", "Replenish 1 heart."}
     };
+
+    Dictionary<string, Sprite> upgradeCardSprites;
 
     Dictionary<string, Dictionary<string, float>> upgrades =
     new Dictionary<string, Dictionary<string, float>>{
@@ -96,6 +108,20 @@ public class UpgradesHandler : MonoBehaviour
         playerStats = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerStats>();
         setVisible(false);
         cursor = GameObject.FindGameObjectWithTag("cursor");
+
+        upgradeCardSprites =
+        new Dictionary<string, Sprite>
+        {
+            {"projectileHits", CARD_PIERCE},
+            {"attackDelay", CARD_DEXTERITY},
+            {"dmg", CARD_DAMAGE},
+            {"moveSpeed", CARD_HASTE},
+            {"numberOfProjectiles", CARD_MULTISHOT},
+            {"hp", CARD_HEALING},
+            {"meleeWeapon", CARD_SWORD},
+            {"rangedWeapon", CARD_CROSSBOW}
+        };
+
     }
 
     // ..would not fly in prod..
@@ -144,8 +170,10 @@ public class UpgradesHandler : MonoBehaviour
         {
             leftButton.name = "meleeWeapon";
             rightButton.name = "rangedWeapon";
-            leftButton.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "melee";
-            rightButton.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "ranged";
+            leftButton.GetComponent<Image>().sprite=upgradeCardSprites["meleeWeapon"];
+            rightButton.GetComponent<Image>().sprite=upgradeCardSprites["rangedWeapon"];
+            //leftButton.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "melee";
+            //rightButton.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "ranged";
             return;
         }
 
@@ -199,8 +227,10 @@ public class UpgradesHandler : MonoBehaviour
         rightButton.name = stat2Name;
 
         // could be replaced with set sprite from dictionary !
-        leftButton.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = upgradeDescriptions[stat1Name];
-        rightButton.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = upgradeDescriptions[stat2Name];
+        //leftButton.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = upgradeDescriptions[stat1Name];
+        //rightButton.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = upgradeDescriptions[stat2Name];
+        leftButton.GetComponent<Image>().sprite=upgradeCardSprites[stat1Name];
+        rightButton.GetComponent<Image>().sprite=upgradeCardSprites[stat2Name];
     }
 
     public bool floatToBool(float val)
