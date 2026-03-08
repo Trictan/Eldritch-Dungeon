@@ -33,7 +33,7 @@ public class UpgradesHandler : MonoBehaviour
         {"attackDelay", "Shorten delay between attacks."},
         {"dmg", "Increase damage dealt to enemies."},
         {"moveSpeed", "Increase player movement speed."},
-        {"moreProjectiles", "+1 projectiles fired"}
+        {"numberOfProjectiles", "+1 projectiles fired"}
     };
 
     Dictionary<string, Dictionary<string, float>> upgrades =
@@ -44,6 +44,7 @@ public class UpgradesHandler : MonoBehaviour
                 {"offset", 1f},
                 {"multiplier", 1f},
                 {"increasing", 1f},
+                {"type", 1f},
             }
         },
         {"attackDelay", new Dictionary<string, float>
@@ -70,12 +71,13 @@ public class UpgradesHandler : MonoBehaviour
                 {"increasing", 1f},
             }
         },
-        {"moreProjectile", new Dictionary<string, float>
+        {"numberOfProjectiles", new Dictionary<string, float>
             {
                 {"capValue", 3f},
-                {"offset", 0f},
-                {"multiplier", 1.2f},
+                {"offset", 1f},
+                {"multiplier", 1f},
                 {"increasing", 1f},
+                {"type", 1f},
             }
         },
     };
@@ -105,9 +107,9 @@ public class UpgradesHandler : MonoBehaviour
             case "projectileHits": playerStats.projectileHits = (int) value; break;
             case "attackDelay": playerStats.attackDelay = (float) value; break;
             case "moveSpeed": playerStats.movementSpeed = (float) value; break;
-            case "moreProjectiles": playerStats.movementSpeed = (float) value; break;
-            case "meleeWeapon": gameController.setMeleeWeapon(); break;
-            case "rangedWeapon": gameController.setRangedWeapon(); break;
+            case "numberOfProjectiles": playerStats.numberOfProjectiles = (int) value; break;
+            case "meleeWeapon": gameController.setMeleeWeapon(); playerStats.hasMelee=1; break;
+            case "rangedWeapon": gameController.setRangedWeapon(); playerStats.hasRanged=1; break;
         }
     }
 
@@ -120,7 +122,7 @@ public class UpgradesHandler : MonoBehaviour
             case "projectileHits": return (float) playerStats.projectileHits;
             case "attackDelay": return (float) playerStats.attackDelay;
             case "moveSpeed": return (float) playerStats.movementSpeed;
-            case "moreProjectiles": return (float) playerStats.movementSpeed;
+            case "numberOfProjectiles": return (float) playerStats.numberOfProjectiles;
         }
         return 0f;
     }
@@ -143,6 +145,22 @@ public class UpgradesHandler : MonoBehaviour
             string statName = stat.Key;
             float statVal = getStat(statName);
             Dictionary<string, float> statDictionary = upgrades[statName];
+
+            // filter upgrades by weapon type
+            if (statDictionary.ContainsKey("type"))
+            {
+                if (statDictionary["type"]==1)
+                {
+                    // ranged only stat
+                    if(playerStats.hasRanged==0) {continue;}
+                }
+                else if (statDictionary["type"]==2)
+                {
+                    // melee only stat
+                    if(playerStats.hasRanged==0) {continue;}
+                }
+            }
+
             bool increasing =  floatToBool(statDictionary["increasing"]);
             float statCapVal = statDictionary["capValue"];
             print(statName + " " + statVal + " cap:" + statCapVal + " t:" + increasing);

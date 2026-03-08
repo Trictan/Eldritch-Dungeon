@@ -27,8 +27,12 @@ public class GameController : MonoBehaviour
     public GameObject playerProjectile;
     public GameObject projectileFolder;
 
+    private PlayerStats playerStats;
+
     void Start()
     {
+        playerStats = player.GetComponent<PlayerStats>();
+
         for (int i = 0; i<18; i++)
         {
             for (int k = 0; k<8 ;k++)
@@ -70,12 +74,14 @@ public class GameController : MonoBehaviour
     {
         GameObject rangedWeaponInstance = Instantiate(rangedWeapon, new Vector3(0,0,0), Quaternion.identity) as GameObject;
         rangedWeaponInstance.transform.parent = player.transform;
+        playerStats.hasRanged=1;
     }
 
     public void setMeleeWeapon()
     {
         GameObject meleeWeaponInstance = Instantiate(meleeWeapon, new Vector3(0,0,0), Quaternion.identity) as GameObject;
         meleeWeaponInstance.transform.parent = player.transform;
+        playerStats.hasMelee=1;
     }
 
 
