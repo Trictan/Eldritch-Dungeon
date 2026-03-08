@@ -83,6 +83,8 @@ public class RoomControllerScript : MonoBehaviour
                 inLerp=false;
             }
         }
+
+        setSprites();
     }
 
 
@@ -102,28 +104,54 @@ public class RoomControllerScript : MonoBehaviour
         int doorStateInt = (int) Variables.Object(door).Get("state");
         if (doorStateInt != 1) {return;}
 
+        clearProjectiles();
+
+        // special case new floor
         if (door==hatch) {nextFloor(); return;}
 
-        doorLast = oppositeDoor[door];
-
-        nextRoom();
+        if (gameController.traversedRooms>1 && UnityEngine.Random.value>0.5)
+        {
+            bossRoom(door, player);
+        } else
+        {
+            normalRoom(door, player);
+        }
+           
         setSprites();
+    }
+
+    public void normalRoom(GameObject door, GameObject player)
+    {
+        doorLast = oppositeDoor[door];
+        setNormalRoom();
 
         startPosition = doorLast.transform.position * 2; //(doorLast.transform.position - player.transform.position).normalized *15;
         startPosition = cardinalVector(startPosition);
+        startLerp();
+
         player.transform.position = doorLast.transform.Find("Spawnpoint").transform.position;
 
         gameController.SpawnEnemies();
-        startLerp();
+    }
+
+    public void bossRoom(GameObject door, GameObject player)
+    {
+        doorLast = oppositeDoor[door];
+        setBossRoom();
+        player.transform.position = doorLast.transform.Find("Spawnpoint").transform.position;
+        gameController.SpawnBoss(hatch.transform.Find("Spawnpoint").transform.position);
     }
 
     public void nextFloor()
     {
+        // change tileset (?)
         gameController.floor+=1;
+        gameController.traversedRooms=0;
         doorLast=hatch;
-        nextRoom();
+        setNormalRoom();
+        Variables.Object(hatch).Set("state",2);
         setSprites();
-        //animation
+        //animation ?
     }
 
 
@@ -131,14 +159,10 @@ public class RoomControllerScript : MonoBehaviour
     {
         for (int i = 0; i < doors.Count(); i++) 
         {
-            GameObject currentDoor = doors[i];
-            Variables.Object(currentDoor).Set("state",2);
-            if (doorLast != doors[i])
-            {   
-                Variables.Object(currentDoor).Set("state",0);
-            }
+            Variables.Object(doors[i]).Set("state",0);
         }
-
+        Variables.Object(doorLast).Set("state",2);
+        Variables.Object(hatch).Set("state",1);
     }
 
     doorState intToDoorState(int n)
@@ -176,10 +200,9 @@ public class RoomControllerScript : MonoBehaviour
         DeleteAllChildren(pParent.transform);
     }
 
-    void nextRoom()
+    void setNormalRoom()
     {
-        clearProjectiles();
-
+        Variables.Object(hatch).Set("state",0);
         Variables.Object(doorLast).Set("state",2);
 
         int r = UnityEngine.Random.Range(1,4); // 1-3
@@ -233,7 +256,11 @@ public class RoomControllerScript : MonoBehaviour
             case 2:
                 hatchSprite = hatchClosedSprite;
                 break;
+            default:
+                hatchSprite = floorSprite; break;
         }
+        SpriteRenderer spriteRenderer = hatch.GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer.sprite = hatchSprite;
     }
     void setSprite(GameObject door)
     {

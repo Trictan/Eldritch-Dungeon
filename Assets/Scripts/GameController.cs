@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
     public GameObject enemiesParentNode;
     public List<GameObject> enemiesOne;
     public List<GameObject> enemiesTwo;
-    public List<List<GameObject>> bosses;
+    public List<GameObject> bosses;
     List<Vector3> spawnPoints = new List<Vector3>();
     public int floor=1;
     public int traversedRooms=0;
@@ -41,6 +41,8 @@ public class GameController : MonoBehaviour
                 spawnPoints.Add(currentSpawnPoint);
             }
         }
+        floor = 1;
+        traversedRooms = 0;
     }
 
     void Update()
@@ -178,11 +180,24 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public GameObject pickBoss()
+    {
+        // could have parameters, etc
+        int r = Random.Range(0, bosses.Count);
+        return bosses[r];
+    }
+
+    public void SpawnBoss(Vector3 pos) // add parameters to decide what enemies, how many, etc
+    {
+        GameObject bossPrefab = pickBoss();
+        SpawnEnemy(bossPrefab, pos);
+    }
 
     public void SpawnEnemies() // add parameters to decide what enemies, how many, etc
     {
         int count = 0;
-        while (count<NrOfEnemies())
+        int nrOfEnemies = NrOfEnemies();
+        while (count<nrOfEnemies)
         {
             GameObject enemyPrefab = pickEnemy();
             int r = Random.Range(0, spawnPoints.Count);
