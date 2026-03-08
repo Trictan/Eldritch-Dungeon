@@ -6,7 +6,7 @@ public class RangedWeapon : MonoBehaviour
     private Camera mainCam;
     private Vector3 mousePos;
 
-    public GameObject bullet;
+    public GameObject projectile;
     public Transform BulletTransform;
     private float timer;
 
@@ -35,6 +35,7 @@ public class RangedWeapon : MonoBehaviour
         float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
 
         transform.rotation = Quaternion.Euler(0,0,rotZ);
+        Quaternion fiveDegree = Quaternion.Euler(45,45,45);
         if(!playerStats.canFire)
         {
             timer +=Time.deltaTime;
@@ -53,10 +54,33 @@ public class RangedWeapon : MonoBehaviour
             animator.SetBool("canFire", playerStats.canFire);
             animator.SetTrigger("fire");
             //anim here
-        
-            Instantiate(bullet, BulletTransform.position, Quaternion.identity, projectileFolder);
+            if (playerStats.numberOfProjectiles == 1)
+            {
+                
+            }
+            else if (playerStats.numberOfProjectiles == 2)
+            {
+                Quaternion spawnRotation = BulletTransform.rotation * Quaternion.Euler(0, 45, 0);
+                SpawnProjectile(RotateVector(mousePos, 90));
+                //Instantiate(bullet, BulletTransform.position, Quaternion.identity, projectileFolder);
+            }
+            
         }
 
+    void SpawnProjectile(Vector2 dir)
+    {
+        GameObject bullet = Instantiate(projectile, BulletTransform.position, Quaternion.identity, projectileFolder);
+        bullet.GetComponent<BulletScript>().SetDirection(dir);
+    }
+    }
+
+Vector2 RotateVector(Vector2 basedir, float degrees)
+    {
+        float rad = degrees * Mathf.Deg2Rad;
+        float cos = Mathf.Cos(rad);
+        float sin = Mathf.Sin(rad);
+
+        return new Vector2(basedir.x * cos - basedir.y * sin, basedir.x * sin + basedir.y * cos);
     }
 
 }
