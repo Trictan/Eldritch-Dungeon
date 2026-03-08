@@ -14,7 +14,7 @@ public class CursorManager : MonoBehaviour
     void Start()
     {
         cursorSightHotspot = new Vector2(cursorSight.width / 2, cursorSight.height /2);
-        cursorHandHotspot = new Vector2((cursorSight.width / 2) -80, 0);
+        cursorHandHotspot = new Vector2(cursorSight.width / 2, 0);
         setSceneCursor();
     }
 

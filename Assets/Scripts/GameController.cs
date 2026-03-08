@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 public class GameController : MonoBehaviour
 {
-
-
     public RoomControllerScript roomController;
     public GameObject testEnemy;
     public GameObject player;
@@ -16,6 +14,8 @@ public class GameController : MonoBehaviour
     int floor;
     int traversedRooms;
     bool previousRoomStatus=true;
+
+    public UpgradesHandler upgradesHandler;
 
     void Start()
     {
@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
             }
         }
 
-        floor=0;
+        floor=1;
         traversedRooms=0;
     }
 
@@ -38,18 +38,32 @@ public class GameController : MonoBehaviour
     {
         if (changeInRoomStatus())
         {
-            int levelUp = player.GetComponent<LevelSystem>().getGainedLevels();
-            if (levelUp > 0)
-            {
-                //Call to upgrade scene
-                player.GetComponent<LevelSystem>().resetGainedLevels();
-                //Debug.Log("Upgrade");
-            }
+            
             print(isClear());
+            if(isClear()){    
+                traversedRooms = traversedRooms + 1;
+            }
+
             roomController.setSprites();
             previousRoomStatus = isClear();
+
+            if(!isClear()) SoundEffectManager.Instance.DoorClose();
+            else SoundEffectManager.Instance.DoorOpen(); //Might come when the upgrade is happening
+
+        }
+        
+        if (!isClear()) {return;}
+
+        int levelUp = player.GetComponent<LevelSystem>().getGainedLevels();
+        if (levelUp > 0)
+        {
+                //Call to upgrade scene
+            upgradesHandler.OpenUpgrades();
+            player.GetComponent<LevelSystem>().resetGainedLevels();
+            Debug.Log("Upgrade");
         }
     }
+
 
     public bool isClear()
     {
@@ -90,10 +104,26 @@ public class GameController : MonoBehaviour
         enemyInstance.transform.parent = enemiesParentNode.transform;
     }
     
+    int NrOfEnemies(){
+        int max;
+        if (floor<=3){
+            max = traversedRooms * floor;
+            max = max + 1;
+        }
+        else{
+            max = traversedRooms * (floor - Mathf.RoundToInt(floor/2));
+        };
+
+        int nr = Random.Range(floor, max);
+        return nr;
+        
+    }
+
+
     public void SpawnEnemies() // add parameters to decide what enemies, how many, etc
     {
         int count = 0;
-        while (count<3)
+        while (count<NrOfEnemies())
         {
             int r = Random.Range(0, spawnPoints.Count);
             Vector3 spawnPoint = spawnPoints[r];

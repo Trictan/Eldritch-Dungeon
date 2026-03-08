@@ -4,7 +4,6 @@ using UnityEngine;
 public class PlayerCtrl: MonoBehaviour
 {
     public RoomControllerScript roomControllerScript;
-    public float moveSpeed = 3f;
     private Rigidbody2D rb;
     private Animator animator;
     private Vector2 moveVector;
@@ -14,6 +13,9 @@ public class PlayerCtrl: MonoBehaviour
     
     public bool iFrame;
     private float timer;
+
+    private PlayerEffects playerEffects;
+    [SerializeField] private Color overlay = Color.red;
 //
 
     void Start ()
@@ -21,6 +23,7 @@ public class PlayerCtrl: MonoBehaviour
         // fetch components
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        playerEffects = GetComponent<PlayerEffects>();
     }
 
     void Update ()
@@ -42,11 +45,6 @@ public class PlayerCtrl: MonoBehaviour
         {
             animator.SetBool("isWalking", false);
         }
-    }
-
-    void FixedUpdate ()
-    {
-        rb.linearVelocity = moveVector * moveSpeed;
 
         if(iFrame) {
             timer +=Time.deltaTime;
@@ -54,12 +52,17 @@ public class PlayerCtrl: MonoBehaviour
             {
                 iFrame=false;
                 timer=0;
+                playerEffects.ClearOverlay();
             }
         }
-      
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void FixedUpdate ()
+    {
+        rb.linearVelocity = moveVector * playerStats.movementSpeed;
+    }
+
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.tag == "door")
         {
@@ -71,6 +74,7 @@ public class PlayerCtrl: MonoBehaviour
     public void SetiFrame(bool val)
     {
         iFrame=val;
+        if(iFrame) playerEffects.SetOverlay(overlay, 0.3f);
     }
     public bool GetiFrame()
     {
