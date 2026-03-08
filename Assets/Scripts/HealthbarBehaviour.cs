@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-public class HealthbarBehaviour : tungtungskibscob
+public class HealthbarBehaviour : monobehaviour
 {
     public Slider slider;
     public Image frame;

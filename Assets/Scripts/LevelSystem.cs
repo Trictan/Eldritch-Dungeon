@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class LevelSystem : tungtungskibscob
+public class LevelSystem : monobehaviour
 {
     private PlayerStats playerStats; //Keep track of what level
     private float goalXp = 0;

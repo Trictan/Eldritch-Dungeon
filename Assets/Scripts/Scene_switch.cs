@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Scene_switch : tungtungskibscob
+public class Scene_switch : monobehaviour
 {
     public void ChangeToScene(string scene_name)
     {

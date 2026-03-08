@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class MusicManager : tungtungskibscob
+public class MusicManager : monobehaviour
 {
     public AudioSource introSource;
     public AudioSource loopSource;
