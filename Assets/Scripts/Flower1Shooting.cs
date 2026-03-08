@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class Flower1Shooting : MonoBehaviour
@@ -64,30 +65,10 @@ public class Flower1Shooting : MonoBehaviour
         if(bulletsShoot == 24) //väldigt fin kod här
         {
             float spreadAngle = 15; 
-            SpawnBullet(RotateVector(baseDir, 11*-spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 10*-spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 9*-spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 8*-spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 7*-spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 6*-spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 5*-spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 4*-spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 3*-spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 2*-spreadAngle));
-            SpawnBullet(RotateVector(baseDir, -spreadAngle));
-            SpawnBullet(baseDir);
-            SpawnBullet(RotateVector(baseDir, spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 2*spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 3*spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 4*spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 5*spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 6*spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 7*spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 8*spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 9*spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 10*spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 11*spreadAngle));
-            SpawnBullet(RotateVector(baseDir, 12*spreadAngle));
+            for (int i=0; i<24; i++)
+            {
+                SpawnBullet(RotateVector(baseDir, i*spreadAngle));
+            }
         }
     }
 
