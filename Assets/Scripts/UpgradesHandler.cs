@@ -33,7 +33,8 @@ public class UpgradesHandler : MonoBehaviour
         {"attackDelay", "Shorten delay between attacks."},
         {"dmg", "Increase damage dealt to enemies."},
         {"moveSpeed", "Increase player movement speed."},
-        {"numberOfProjectiles", "+1 projectiles fired"}
+        {"numberOfProjectiles", "+1 projectiles fired"},
+        {"hp", "Replenish 1 heart."}
     };
 
     Dictionary<string, Dictionary<string, float>> upgrades =
@@ -80,6 +81,14 @@ public class UpgradesHandler : MonoBehaviour
                 {"type", 1f},
             }
         },
+        {"hp", new Dictionary<string, float>
+            {
+                {"capValue", 6f},
+                {"offset", 1f},
+                {"multiplier", 1f},
+                {"increasing", 1f},
+            }
+        },
     };
 
     void Start()
@@ -110,6 +119,7 @@ public class UpgradesHandler : MonoBehaviour
             case "numberOfProjectiles": playerStats.numberOfProjectiles = (int) value; break;
             case "meleeWeapon": gameController.setMeleeWeapon(); playerStats.hasMelee=1; break;
             case "rangedWeapon": gameController.setRangedWeapon(); playerStats.hasRanged=1; break;
+            case "hp": playerStats.HP = (float) value; break;
         }
     }
 
@@ -123,6 +133,7 @@ public class UpgradesHandler : MonoBehaviour
             case "attackDelay": return (float) playerStats.attackDelay;
             case "moveSpeed": return (float) playerStats.movementSpeed;
             case "numberOfProjectiles": return (float) playerStats.numberOfProjectiles;
+            case "hp": return (float) playerStats.HP;
         }
         return 0f;
     }

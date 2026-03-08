@@ -8,14 +8,12 @@ public class GameController : MonoBehaviour
     public GameObject testEnemy;
     public GameObject player;
     public GameObject enemiesParentNode;
-
-    public List<List<GameObject>> enemies;
     public List<GameObject> enemiesOne;
     public List<GameObject> enemiesTwo;
     public List<List<GameObject>> bosses;
     List<Vector3> spawnPoints = new List<Vector3>();
     int floor;
-    int traversedRooms;
+    int traversedRooms=0;
     bool previousRoomStatus=true;
 
     public UpgradesHandler upgradesHandler;
@@ -170,17 +168,31 @@ public class GameController : MonoBehaviour
         
     }
 
+    public GameObject pickEnemy()
+    {
+        // floor as parameter too 
+        if (traversedRooms<3)
+        {
+            return enemiesOne[0];
+        } else
+        {
+            int r = Random.Range(0, enemiesOne.Count);
+            return enemiesOne[r];
+        }
+    }
+
 
     public void SpawnEnemies() // add parameters to decide what enemies, how many, etc
     {
         int count = 0;
         while (count<NrOfEnemies())
         {
+            GameObject enemyPrefab = pickEnemy();
             int r = Random.Range(0, spawnPoints.Count);
             Vector3 spawnPoint = spawnPoints[r];
             if (ValidSpawn(spawnPoint))
             {
-              SpawnEnemy(testEnemy, spawnPoint);
+              SpawnEnemy(enemyPrefab, spawnPoint);
               count+=1;
             };
         }
