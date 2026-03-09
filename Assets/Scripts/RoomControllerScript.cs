@@ -148,6 +148,15 @@ public class RoomControllerScript : MonoBehaviour
         Time.timeScale=0;
     }
 
+    void startLerpHatch()
+    {
+        startPosition = staticPosition;
+        endPosition = staticPosition;
+        elapsedTime = 0f;
+        inLerpTwo=true;
+        Time.timeScale=0;
+    }
+
     public void setRoom(GameObject door, GameObject player)
     {
         // return if room not cleared
@@ -190,6 +199,9 @@ public class RoomControllerScript : MonoBehaviour
     {
         doorLast = oppositeDoor[door];
         setBossRoom();
+
+        startLerpOne(door);
+
         player.transform.position = doorLast.transform.Find("Spawnpoint").transform.position;
         gameController.SpawnBoss(hatch.transform.Find("Spawnpoint").transform.position);
     }
@@ -203,6 +215,7 @@ public class RoomControllerScript : MonoBehaviour
         setNormalRoom();
         Variables.Object(hatch).Set("state",0);
         setSprites();
+        startLerpHatch();
         //animation ?
     }
 
