@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 using System;
+using UnityEngine.UI;
 
 public class RoomControllerScript : MonoBehaviour
 {
@@ -20,11 +21,15 @@ public class RoomControllerScript : MonoBehaviour
     private Camera cam;
     private Vector3 endPosition;
     private Vector3 startPosition;
+    private Vector3 staticPosition;
 
     private float elapsedTime;
     private float duration = 0.25f;
 
-    private bool inLerp = false;
+    private bool inLerpOne = false;
+    private bool inLerpTwo = false;
+
+    private GameObject blackout;
 
 
     Dictionary <GameObject, GameObject> oppositeDoor = new Dictionary<GameObject, GameObject>();
@@ -39,6 +44,9 @@ public class RoomControllerScript : MonoBehaviour
     public Sprite hatchClosedSprite;
     public Sprite floorSprite;
 
+    private Color COLOR_BLACKOUT = new Color(0,0,0,1);
+    private Color COLOR_SEETHROUGH = new Color(0,0,0,0);
+
 
     public GameObject hatch;
 
@@ -48,18 +56,20 @@ public class RoomControllerScript : MonoBehaviour
     GameObject doorLast;
 
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Start()
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        endPosition = cam.transform.position;
+        staticPosition = cam.transform.position;
 
         oppositeDoor.Add(doors[0], doors[1]);
         oppositeDoor.Add(doors[1], doors[0]);
         oppositeDoor.Add(doors[2], doors[3]);
         oppositeDoor.Add(doors[3], doors[2]);
 
+        blackout = GameObject.FindGameObjectWithTag("Blackout");
     }  
 
     Vector3 cardinalVector(Vector3 vec)
@@ -75,24 +85,64 @@ public class RoomControllerScript : MonoBehaviour
 
     void Update()
     {
-        if (inLerp) {
+        if (inLerpOne | inLerpTwo) {
             elapsedTime += Time.deltaTime;
             float percentage = elapsedTime / duration;
             cam.transform.position = Vector3.Lerp(startPosition, endPosition, percentage);
-            if (elapsedTime==duration) {
-                inLerp=false;
+            if (inLerpOne)
+            {
+                Color color = Color.Lerp(COLOR_SEETHROUGH, COLOR_BLACKOUT, percentage);
+                setBlackoutColor(color);
+            }
+            else if (inLerpTwo)
+            {
+                Color color = Color.Lerp(COLOR_BLACKOUT, COLOR_SEETHROUGH, percentage);
+                setBlackoutColor(color);
+            }
+
+            if (elapsedTime>=duration) {
+                if (inLerpOne)
+                {
+                    inLerpOne=false;
+
+                    startLerpTwo();    
+                }
+                else if (inLerpTwo)
+                {
+                    inLerpTwo=false;
+                }
+                
             }
         }
 
         setSprites();
     }
 
-
-
-    void startLerp()
+    void setBlackoutColor(Color color)
     {
+        if (blackout.TryGetComponent<UnityEngine.UI.Image>(out UnityEngine.UI.Image image))
+        {
+            image.color = color;
+        }
+    }
+
+
+    void startLerpOne(GameObject door)
+    {
+        startPosition = staticPosition;
+        endPosition = door.transform.position * 2 + new Vector3(0,0,-10);
+        endPosition = cardinalVector(endPosition);
         elapsedTime = 0f;
-        inLerp=true;
+        inLerpOne=true;
+    }
+
+    void startLerpTwo()
+    {
+        startPosition = doorLast.transform.position * 2 + new Vector3(0,0,-10);
+        startPosition = cardinalVector(startPosition);
+        endPosition = staticPosition;
+        elapsedTime = 0f;
+        inLerpTwo=true;
     }
 
     public void setRoom(GameObject door, GameObject player)
@@ -125,9 +175,8 @@ public class RoomControllerScript : MonoBehaviour
         doorLast = oppositeDoor[door];
         setNormalRoom();
 
-        startPosition = doorLast.transform.position * 2; //(doorLast.transform.position - player.transform.position).normalized *15;
-        startPosition = cardinalVector(startPosition);
-        startLerp();
+        
+        startLerpOne(door);
 
         player.transform.position = doorLast.transform.Find("Spawnpoint").transform.position;
 
