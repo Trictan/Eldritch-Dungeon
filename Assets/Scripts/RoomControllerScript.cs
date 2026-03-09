@@ -24,7 +24,7 @@ public class RoomControllerScript : MonoBehaviour
     private Vector3 staticPosition;
 
     private float elapsedTime;
-    private float duration = 0.2f;
+    private float duration = 0.15f;
 
     private bool inLerpOne = false;
     private bool inLerpTwo = false;
@@ -86,7 +86,7 @@ public class RoomControllerScript : MonoBehaviour
     void Update()
     {
         if (inLerpOne | inLerpTwo) {
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             float percentage = elapsedTime / duration;
             cam.transform.position = Vector3.Lerp(startPosition, endPosition, percentage);
             if (inLerpOne)
@@ -104,12 +104,13 @@ public class RoomControllerScript : MonoBehaviour
                 if (inLerpOne)
                 {
                     inLerpOne=false;
-
+                    Time.timeScale=1;
                     startLerpTwo();    
                 }
                 else if (inLerpTwo)
                 {
                     inLerpTwo=false;
+                    Time.timeScale=1;
                 }
                 
             }
@@ -134,6 +135,7 @@ public class RoomControllerScript : MonoBehaviour
         endPosition = cardinalVector(endPosition);
         elapsedTime = 0f;
         inLerpOne=true;
+        Time.timeScale=0;
     }
 
     void startLerpTwo()
@@ -143,6 +145,7 @@ public class RoomControllerScript : MonoBehaviour
         endPosition = staticPosition;
         elapsedTime = 0f;
         inLerpTwo=true;
+        Time.timeScale=0;
     }
 
     public void setRoom(GameObject door, GameObject player)
@@ -159,7 +162,7 @@ public class RoomControllerScript : MonoBehaviour
         // special case new floor
         if (door==hatch) {nextFloor(); return;}
 
-        if (GameController.traversedRooms>9 && UnityEngine.Random.value>0.5)
+        if (GameController.traversedRooms>3 && UnityEngine.Random.value>0.5)
         {
             bossRoom(door, player);
         } else
