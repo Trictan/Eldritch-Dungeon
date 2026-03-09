@@ -26,8 +26,11 @@ public class RoomControllerScript : MonoBehaviour
     private float elapsedTime;
     private float duration = 0.15f;
 
+    private float hatchDuration = 1f;
+
     private bool inLerpOne = false;
     private bool inLerpTwo = false;
+    private bool inLerpHatch = false;
 
     private GameObject blackout;
 
@@ -85,9 +88,9 @@ public class RoomControllerScript : MonoBehaviour
 
     void Update()
     {
-        if (inLerpOne | inLerpTwo) {
+        if (inLerpOne | inLerpTwo | inLerpHatch) {
             elapsedTime += Time.unscaledDeltaTime;
-            float percentage = elapsedTime / duration;
+            float percentage = inLerpHatch? elapsedTime/hatchDuration : elapsedTime / duration;
             cam.transform.position = Vector3.Lerp(startPosition, endPosition, percentage);
             if (inLerpOne)
             {
@@ -95,6 +98,11 @@ public class RoomControllerScript : MonoBehaviour
                 setBlackoutColor(color);
             }
             else if (inLerpTwo)
+            {
+                Color color = Color.Lerp(COLOR_BLACKOUT, COLOR_SEETHROUGH, percentage);
+                setBlackoutColor(color);
+            }
+            else if (inLerpHatch)
             {
                 Color color = Color.Lerp(COLOR_BLACKOUT, COLOR_SEETHROUGH, percentage);
                 setBlackoutColor(color);
@@ -112,7 +120,14 @@ public class RoomControllerScript : MonoBehaviour
                     inLerpTwo=false;
                     Time.timeScale=1;
                 }
-                
+            }
+            // special case hatch
+            if (inLerpHatch) 
+            {
+                if (elapsedTime>=hatchDuration) {
+                    inLerpHatch=false;
+                    Time.timeScale=1;
+                }
             }
         }
 
@@ -153,7 +168,7 @@ public class RoomControllerScript : MonoBehaviour
         startPosition = staticPosition;
         endPosition = staticPosition;
         elapsedTime = 0f;
-        inLerpTwo=true;
+        inLerpHatch=true;
         Time.timeScale=0;
     }
 
@@ -215,6 +230,7 @@ public class RoomControllerScript : MonoBehaviour
         setNormalRoom();
         Variables.Object(hatch).Set("state",0);
         setSprites();
+
         startLerpHatch();
         //animation ?
     }
