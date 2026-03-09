@@ -5,7 +5,7 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
-    public TextMeshProUGUI textElement;
+    public TextMeshProUGUI roomInfo;
     public RoomControllerScript roomController;
     public GameObject testEnemy;
     public GameObject player;
@@ -51,7 +51,6 @@ public class GameController : MonoBehaviour
     {
         if (changeInRoomStatus())
         {
-            textElement.text=$"Floor {floor}\nRooms Cleared: {traversedRooms}";
             roomController.setSprites();
             previousRoomStatus = isClear();
 
@@ -222,5 +221,10 @@ public class GameController : MonoBehaviour
               count+=1;
             };
         }
+    }
+
+    public void setRoomInfo()
+    {
+        roomInfo.text=$"Floor {floor}\nRooms Cleared: {traversedRooms}";
     }
 }

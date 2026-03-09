@@ -195,6 +195,7 @@ public class RoomControllerScript : MonoBehaviour
         }
            
         setSprites();
+        gameController.setRoomInfo();
     }
 
     public void normalRoom(GameObject door, GameObject player)
@@ -226,6 +227,7 @@ public class RoomControllerScript : MonoBehaviour
         // change tileset (?)
         GameController.floor+=1;
         GameController.traversedRooms=0;
+        gameController.setRoomInfo();
         doorLast=hatch;
         setNormalRoom();
         Variables.Object(hatch).Set("state",0);

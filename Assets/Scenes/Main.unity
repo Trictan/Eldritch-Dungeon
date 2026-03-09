@@ -1699,7 +1699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7029594f30b7643bc050ad640a9fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textElement: {fileID: 1117382290}
+  roomInfo: {fileID: 1117382290}
   roomController: {fileID: 1785546864}
   testEnemy: {fileID: 885313239738718303, guid: 4fb403ff665f69049aa738daa1e2d91e, type: 3}
   player: {fileID: 1281599584}
@@ -2721,7 +2721,7 @@ GameObject:
   - component: {fileID: 1117382290}
   - component: {fileID: 1117382289}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: info
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5361,7 +5361,7 @@ GameObject:
   - component: {fileID: 1211614832}
   - component: {fileID: 1211614831}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: RoomInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
