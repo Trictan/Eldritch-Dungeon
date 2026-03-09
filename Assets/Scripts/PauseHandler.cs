@@ -16,6 +16,11 @@ public class PauseHandler : MonoBehaviour
         cursor = GameObject.FindGameObjectWithTag("cursor");
     }
 
+    public bool isPaused()
+    {
+        return paused;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -31,7 +36,6 @@ public class PauseHandler : MonoBehaviour
             }
         }
     }
-
     void setVisible(bool val)
     {
         canvas.enabled = val;

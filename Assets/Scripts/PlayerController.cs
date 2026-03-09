@@ -6,6 +6,7 @@ using UnityEngine.InputSystem.Controls;
 public class PlayerCtrl: MonoBehaviour
 {
     public RoomControllerScript roomControllerScript;
+    public UpgradesHandler upgradeHandler;
     private Rigidbody2D rb;
     private Animator animator;
     private Vector2 moveVector;
@@ -73,6 +74,7 @@ public class PlayerCtrl: MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && DashReady)
         {
+            if (upgradeHandler.InUpgrades()) {return;}
             _t=0;
             Dash(true);
             DashReady=false;

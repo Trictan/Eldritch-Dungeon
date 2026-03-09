@@ -34,6 +34,7 @@ public class RoomControllerScript : MonoBehaviour
 
     private GameObject blackout;
 
+    public PauseHandler pauseHandler;
 
     Dictionary <GameObject, GameObject> oppositeDoor = new Dictionary<GameObject, GameObject>();
 
@@ -112,13 +113,12 @@ public class RoomControllerScript : MonoBehaviour
                 if (inLerpOne)
                 {
                     inLerpOne=false;
-                    Time.timeScale=1;
                     startLerpTwo();    
                 }
                 else if (inLerpTwo)
                 {
                     inLerpTwo=false;
-                    Time.timeScale=1;
+                    if (!pauseHandler.isPaused()) {Time.timeScale=1;}
                 }
             }
             // special case hatch
@@ -126,7 +126,7 @@ public class RoomControllerScript : MonoBehaviour
             {
                 if (elapsedTime>=hatchDuration) {
                     inLerpHatch=false;
-                    Time.timeScale=1;
+                    if (!pauseHandler.isPaused()) {Time.timeScale=1;}
                 }
             }
         }

@@ -5,8 +5,6 @@ using TMPro;
 
 public class UpgradesHandler : MonoBehaviour
 {
-
-
     public Color COLOR_LOCKED;
     public Color COLOR_DESELECTED;
     public Color COLOR_SELECTED;
@@ -102,6 +100,11 @@ public class UpgradesHandler : MonoBehaviour
             }
         },
     };
+
+    public bool InUpgrades()
+    {
+        return inUpgrades;
+    }
 
     void Start()
     {
@@ -275,10 +278,6 @@ public class UpgradesHandler : MonoBehaviour
         }
     }
 
-    public bool InUpgrades()
-    {
-        return inUpgrades;
-    }
 
     void setVisible(bool val)
     {

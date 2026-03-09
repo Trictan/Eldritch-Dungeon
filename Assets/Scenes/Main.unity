@@ -5722,6 +5722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomControllerScript: {fileID: 1785546864}
+  upgradeHandler: {fileID: 1326465670}
   playerStats: {fileID: 1281599591}
   iFrame: 0
   overlay: {r: 1, g: 0, b: 0, a: 1}
@@ -7173,6 +7174,7 @@ MonoBehaviour:
   - {fileID: 1792802459}
   - {fileID: 675576890}
   - {fileID: 2050690436}
+  pauseHandler: {fileID: 773325302}
   doorOpenSprite: {fileID: 21300000, guid: 4b350e558ef1e354fbaf625e19fb7f27, type: 3}
   doorClosedSprite: {fileID: 21300000, guid: 08fb1dd5696ac824a9f2dddc541f1aed, type: 3}
   wallSprite: {fileID: 21300000, guid: f82ad82738cfe4d47b1cb6debac4651c, type: 3}
