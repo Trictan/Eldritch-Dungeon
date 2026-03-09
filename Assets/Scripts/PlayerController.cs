@@ -22,6 +22,7 @@ public class PlayerCtrl: MonoBehaviour
     private float DashCD=4;
 
     private PlayerEffects playerEffects;
+    private PlayerStats playerstats;
     [SerializeField] private Color overlay = Color.red;
 //
 
@@ -31,6 +32,7 @@ public class PlayerCtrl: MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         playerEffects = GetComponent<PlayerEffects>();
+        playerstats = GetComponent<PlayerStats>();
     }
 
     void Update ()
@@ -71,28 +73,23 @@ public class PlayerCtrl: MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && DashReady)
         {
-            InDash=true;
             _t=0;
-            PlayerStats playerstats = GetComponent<PlayerStats>();
-            playerstats.movementSpeed+=11;
+            Dash(true);
             DashReady=false;
             DashCD=0;
         }
 
         if(_t>0.3 && InDash)
         {
-            PlayerStats playerstats = GetComponent<PlayerStats>();
-            playerstats.movementSpeed-=11;
-            InDash=false;
+            Dash(false);
         }//0.5 is the dash Duration
-        _t+=Time.deltaTime;
+        _t+=Time.unscaledDeltaTime;
     }
 
     void FixedUpdate ()
     {
         rb.linearVelocity = moveVector * playerStats.movementSpeed;
     }
-
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.tag == "door")
@@ -110,5 +107,17 @@ public class PlayerCtrl: MonoBehaviour
     public bool GetiFrame()
     {
         return iFrame;
+    }
+    public void Dash(bool active)
+    {
+       
+        if(active){
+             playerstats.movementSpeed+=11; 
+             InDash=true;
+             }
+        else {
+            playerstats.movementSpeed-=11;
+            InDash=false;
+            }
     }
 }
