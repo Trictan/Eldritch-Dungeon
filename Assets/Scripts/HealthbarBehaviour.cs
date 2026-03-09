@@ -33,8 +33,8 @@ public class HealthbarBehaviour : MonoBehaviour
         frameRT.sizeDelta = new Vector2((spriteBounds.x * 100f) , frameRT.sizeDelta.y/localScale.y);
 
         // Sätt position under enemy
-        transform.localPosition = new Vector3((localScale.x-1)*(spriteBounds.x/2),-(spriteBounds.y/localScale.y)*0.8f, 0);
-    }
+        transform.localPosition = new Vector3(0, -enemySprite.bounds.size.y / 2 - 0.2f, 0);
+        }
 
     // Update is called once per frame
     void Update()
