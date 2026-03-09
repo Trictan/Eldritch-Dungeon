@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -4137660226549573179}
   - component: {fileID: 8755271631744369100}
   - component: {fileID: 7384045341823312875}
+  - component: {fileID: 5174046075338739722}
   m_Layer: 0
   m_Name: Flower_type1
   m_TagString: enemy
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1518349569, guid: 622d39ab6ce03c94ead5426d358d0495, type: 3}
+  m_Sprite: {fileID: 1566724140, guid: 7ca1bc8cc9b75e54781a2f37a3472566, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,9 +107,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seedBullet: {fileID: 5538229617618804044, guid: d5c56300f01466f4484ed709461b16c4, type: 3}
+  specialBullet: {fileID: 0}
   seedBulletPos: {fileID: 3503572410724610028}
   bulletsShoot: 1
   fireDelay: 2
+  specialAttack: 0
 --- !u!61 &-4137660226549573179
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -181,6 +184,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Xp: 5
+--- !u!95 &5174046075338739722
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885313239738718303}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0e2c13e2787be1c45838984f7f9ac27b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2394668878651143333
 GameObject:
   m_ObjectHideFlags: 0
