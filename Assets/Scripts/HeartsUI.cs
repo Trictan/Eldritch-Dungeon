@@ -29,20 +29,20 @@ public class HeartsUI : MonoBehaviour
             if(i <= 2)
             {
                 if(heartHealth == 1)
-                    hearts[i].GetComponent<SpriteRenderer>().sprite = fullHeart;
+                    hearts[i].GetComponent<Image>().sprite = fullHeart;
                 else if(heartHealth == 0.5)
-                    hearts[i].GetComponent<SpriteRenderer>().sprite = halfHeart;
+                    hearts[i].GetComponent<Image>().sprite = halfHeart;
                 else
-                    hearts[i].GetComponent<SpriteRenderer>().sprite = emptyHeart;
+                    hearts[i].GetComponent<Image>().sprite = emptyHeart;
             }
 
             else
             {
                 hearts[i].gameObject.SetActive(true);
                 if(heartHealth == 1)
-                    hearts[i].GetComponent<SpriteRenderer>().sprite = fullSpecialHeart;
+                    hearts[i].GetComponent<Image>().sprite = fullSpecialHeart;
                 else if(heartHealth == 0.5)
-                    hearts[i].GetComponent<SpriteRenderer>().sprite = halfSpecialHeart;
+                    hearts[i].GetComponent<Image>().sprite = halfSpecialHeart;
                 else
                     hearts[i].gameObject.SetActive(false);
             }

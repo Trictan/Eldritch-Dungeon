@@ -5,6 +5,6 @@ public class Quit : MonoBehaviour
     public void quit_app()
     {
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false; // if editor
+        //UnityEditor.EditorApplication.isPlaying = false; // if editor
     }
 }

@@ -12,7 +12,7 @@ public class Scene_switch : MonoBehaviour
     public void QuitApp()
     {
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false; // if editor
+        //UnityEditor.EditorApplication.isPlaying = false; // if editor
     }
 
     public void ExitToMenu()
