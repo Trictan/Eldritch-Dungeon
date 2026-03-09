@@ -3327,7 +3327,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 0.7705786, g: 0.96654266, b: 0.9685534, a: 1}
     m_HighlightedColor: {r: 0.5526877, g: 0.8490566, b: 0.81984895, a: 1}
@@ -3384,7 +3384,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 082a4ecbec9ec0b44a8cf4dc52ad247a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 86fd5cc7cb5f16d4095e4a5839e1a4d5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
