@@ -24,7 +24,7 @@ public class RoomControllerScript : MonoBehaviour
     private Vector3 staticPosition;
 
     private float elapsedTime;
-    private float duration = 0.25f;
+    private float duration = 0.2f;
 
     private bool inLerpOne = false;
     private bool inLerpTwo = false;
@@ -115,7 +115,7 @@ public class RoomControllerScript : MonoBehaviour
             }
         }
 
-        setSprites();
+        //setSprites();
     }
 
     void setBlackoutColor(Color color)
@@ -159,7 +159,7 @@ public class RoomControllerScript : MonoBehaviour
         // special case new floor
         if (door==hatch) {nextFloor(); return;}
 
-        if (GameController.traversedRooms>1 && UnityEngine.Random.value>0.5)
+        if (GameController.traversedRooms>9 && UnityEngine.Random.value>0.5)
         {
             bossRoom(door, player);
         } else

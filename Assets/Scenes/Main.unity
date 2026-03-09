@@ -2447,7 +2447,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1040690577
 RectTransform:
@@ -7723,7 +7723,7 @@ PrefabInstance:
     - target: {fileID: 6136477265314193307, guid: 0d5d344378580d542b0f670cb9484077, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9960a9b7dfa268c4db5ec6c6465d79ab, type: 3}
+      objectReference: {fileID: 21300000, guid: 94185b504a251b442867dada7200b412, type: 3}
     - target: {fileID: 6136477265314193307, guid: 0d5d344378580d542b0f670cb9484077, type: 3}
       propertyPath: m_SortingOrder
       value: -1
@@ -9009,6 +9009,10 @@ PrefabInstance:
     - target: {fileID: 4450817702689971851, guid: d5fa90d2a894ee84a81c5470c7b7ca06, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4761361090781746994, guid: d5fa90d2a894ee84a81c5470c7b7ca06, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5174388383908849749, guid: d5fa90d2a894ee84a81c5470c7b7ca06, type: 3}
       propertyPath: m_Color.b
